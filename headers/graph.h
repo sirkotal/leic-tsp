@@ -32,7 +32,7 @@ public:
 
     int getNumVertex() const;
     std::vector<Vertex *> getVertexSet() const;
-protected:
+private:
     std::vector<Vertex *> vertexSet;    // vertex set
 
     double ** distMatrix = nullptr;   // dist matrix for Floyd-Warshall
