@@ -1,0 +1,4 @@
+*.pdf
+cmake-build-debug/
+.idea/
+/data/Real-World-Graphs/graph3
