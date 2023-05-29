@@ -118,6 +118,8 @@ private:
      */
     int id;
 
+    std::string label = "";
+
     /**
      * @brief The vertex's adjacency list (outgoing edges)
      */
