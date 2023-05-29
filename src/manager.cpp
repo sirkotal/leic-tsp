@@ -2,6 +2,8 @@
 
 #define endF "../data/Toy-Graphs/shipping.csv"
 
+#define MAX std::numeric_limits<double>::max()
+
 Manager::Manager() {
     this->network = new Graph();
     buildGraph(endF);
@@ -52,4 +54,18 @@ void Manager::testing() {
     cout << network->getNumVertex() << endl;
     cout << network->getNumEdges() << endl;
     cout << network->getVertexSet().at(2)->getID() << endl;
+    Vertex* v = network->findVertex(0);
+    int n = network->getNumVertex();
+    vector<bool> visit(n, false);
+    int counter = 0;
+    double distance = 0;
+    double min_distance = MAX;
+    vector<int> min_path;
+    vector<int> test;
+    cout << network->bruteforceBacktrack(v,v, counter, distance, min_distance, visit, min_path, test);
+    cout << endl;
+    for (auto element: min_path) {
+        cout << element << "->";
+    }
+    cout << v->getID() << endl;
 }

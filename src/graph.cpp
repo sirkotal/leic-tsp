@@ -103,3 +103,38 @@ int Graph::getNumEdges() const {
     }
     return res;
 }
+
+double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance,
+                                double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP) {
+    visited[current->getID()] = true;
+    pathTSP.push_back(current->getID());
+    counter++;
+
+    if (counter == visited.size()) {
+        for (auto e : current->getAdj()) {
+            if (e->getDest() == start) {
+                double total_distance = distance + e->getWeight();
+                if (total_distance < min_distance) {
+                    min_distance = total_distance;
+                    min_path = pathTSP;
+                }
+                break;
+            }
+        }
+    }
+    else {
+        for (auto e : current->getAdj()) {
+            Vertex* adj = e->getDest();
+            if (!visited[adj->getID()]) {
+                double updated_distance = distance + e->getWeight();
+                min_distance = bruteforceBacktrack(adj, start, counter, updated_distance, min_distance, visited, min_path, pathTSP);
+            }
+        }
+    }
+
+    visited[current->getID()] = false;
+    pathTSP.pop_back();
+    counter--;
+
+    return min_distance;
+}
