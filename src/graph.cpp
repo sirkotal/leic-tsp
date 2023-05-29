@@ -104,8 +104,8 @@ int Graph::getNumEdges() const {
     return res;
 }
 
-double Graph::bruteforceBacktrack(Vertex* current, vector<bool> &visited, int counter, double distance,
-                                double min_distance, Vertex* start, vector<int> &min_path, vector<int> &pathTSP) {
+double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance,
+                                double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP) {
     visited[current->getID()] = true;
     pathTSP.push_back(current->getID());
     counter++;
@@ -127,7 +127,7 @@ double Graph::bruteforceBacktrack(Vertex* current, vector<bool> &visited, int co
             Vertex* adj = e->getDest();
             if (!visited[adj->getID()]) {
                 double updated_distance = distance + e->getWeight();
-                min_distance = bruteforceBacktrack(adj, visited, counter, updated_distance, min_distance, start, min_path, pathTSP);
+                min_distance = bruteforceBacktrack(adj, start, counter, updated_distance, min_distance, visited, min_path, pathTSP);
             }
         }
     }

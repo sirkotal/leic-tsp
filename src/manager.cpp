@@ -62,7 +62,7 @@ void Manager::testing() {
     double min_distance = MAX;
     vector<int> min_path;
     vector<int> test;
-    cout << network->bruteforceBacktrack(v,visit, counter, distance, min_distance, v, min_path, test);
+    cout << network->bruteforceBacktrack(v,v, counter, distance, min_distance, visit, min_path, test);
     cout << endl;
     for (auto element: min_path) {
         cout << element << "->";
