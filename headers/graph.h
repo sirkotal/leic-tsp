@@ -73,6 +73,10 @@ public:
      */
     vector<Vertex*> getVertexSet() const;
 
+    std::vector<Vertex *> bruteforceTSP();
+
+    void bruteforceBacktrack(Vertex* current, double cost, int visited, double& min_cost, std::vector<Vertex*> &tsp_path);
+
 private:
     /**
      * @brief A vector containing all of the graph's vertexes

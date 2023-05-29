@@ -103,3 +103,21 @@ int Graph::getNumEdges() const {
     }
     return res;
 }
+
+vector<Vertex*> Graph::bruteforceTSP() {
+    vector<Vertex*> pathTSP;
+
+    for (auto &v: vertexSet) {
+        v->setVisited(false);
+        v->setPath(nullptr);
+    }
+
+    double min_cost = MAX;
+
+    int start_id = 0;
+    Vertex* start = findVertex(start_id);
+    start->setVisited(true);
+    bruteforceBacktrack(start, 0, 1, min_cost, pathTSP); // auxiliary
+
+    return pathTSP;
+}
