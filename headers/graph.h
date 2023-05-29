@@ -73,8 +73,18 @@ public:
      */
     vector<Vertex*> getVertexSet() const;
 
-    std::vector<Vertex *> bruteforceTSP();
-
+    /**
+     * @brief Calculates the shortest path starting at one point and ending in another while going through every node of the graph
+     * @param current The current node
+     * @param start The starting node
+     * @param counter Counts the visited nodes
+     * @param distance Distance between the nodes
+     * @param min_distance Current minimum distance between the nodes
+     * @param visited Keeps track of visited nodes
+     * @param min_path The minimum path
+     * @param pathTSP The current path
+     * @return The minimum distance between the two nodes
+     */
     double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP);
 
 private:
