@@ -104,20 +104,37 @@ int Graph::getNumEdges() const {
     return res;
 }
 
-vector<Vertex*> Graph::bruteforceTSP() {
-    vector<Vertex*> pathTSP;
+double Graph::bruteforceBacktrack(Vertex* current, vector<bool> &visited, int counter, double distance,
+                                double min_distance, Vertex* start, vector<int> &min_path, vector<int> &pathTSP) {
+    visited[current->getID()] = true;
+    pathTSP.push_back(current->getID());
+    counter++;
 
-    for (auto &v: vertexSet) {
-        v->setVisited(false);
-        v->setPath(nullptr);
+    if (counter == visited.size()) {
+        for (auto e : current->getAdj()) {
+            if (e->getDest() == start) {
+                double total_distance = distance + e->getWeight();
+                if (total_distance < min_distance) {
+                    min_distance = total_distance;
+                    min_path = pathTSP;
+                }
+                break;
+            }
+        }
+    }
+    else {
+        for (auto e : current->getAdj()) {
+            Vertex* adj = e->getDest();
+            if (!visited[adj->getID()]) {
+                double updated_distance = distance + e->getWeight();
+                min_distance = bruteforceBacktrack(adj, visited, counter, updated_distance, min_distance, start, min_path, pathTSP);
+            }
+        }
     }
 
-    double min_cost = MAX;
+    visited[current->getID()] = false;
+    pathTSP.pop_back();
+    counter--;
 
-    int start_id = 0;
-    Vertex* start = findVertex(start_id);
-    start->setVisited(true);
-    bruteforceBacktrack(start, 0, 1, min_cost, pathTSP); // auxiliary
-
-    return pathTSP;
+    return min_distance;
 }

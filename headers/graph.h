@@ -75,7 +75,7 @@ public:
 
     std::vector<Vertex *> bruteforceTSP();
 
-    void bruteforceBacktrack(Vertex* current, double cost, int visited, double& min_cost, std::vector<Vertex*> &tsp_path);
+    double bruteforceBacktrack(Vertex* current, vector<bool> &visited, int count, double distance, double min_distance, Vertex* start, vector<int> &min_path, vector<int> &pathTSP);
 
 private:
     /**
