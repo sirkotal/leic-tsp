@@ -26,11 +26,14 @@ void Manager::buildGraph(const string& filename) {
             getline(thefile, dest, ',');
             getline(thefile, dist, '\n');
 
-            cout << orig << "||" << dest << "||" << dist << endl;
+            if (orig.size() == 0) {
+                continue;
+            }
 
+            //cout << orig << "||" << dest << "||" << dist << endl;
 
-            int orig_id = std::stoi(orig);
-            int dest_id = std::stoi(dest);
+            int orig_id = stoi(orig);
+            int dest_id = stoi(dest);
             double distance = stod(dist);
 
             network->addVertex(orig_id);
@@ -48,5 +51,5 @@ void Manager::buildGraph(const string& filename) {
 void Manager::testing() {
     cout << network->getNumVertex() << endl;
     cout << network->getNumEdges() << endl;
-    cout << network->getVertexSet().at(1)->getID() << endl;
+    cout << network->getVertexSet().at(2)->getID() << endl;
 }
