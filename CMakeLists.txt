@@ -27,4 +27,4 @@ endif(DOXYGEN_FOUND)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(leic_tsp src/main.cpp headers/graph.h src/graph.cpp headers/vertexedge.h src/vertexedge.cpp)
+add_executable(leic_tsp src/main.cpp headers/graph.h src/graph.cpp headers/vertexedge.h src/vertexedge.cpp headers/manager.h src/manager.cpp)

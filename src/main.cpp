@@ -1,6 +1,9 @@
 #include <iostream>
+#include "manager.h"
+
 
 int main() {
-    std::cout << "Please change the deadline, thanks." << std::endl;
+    Manager manager = Manager();
+    manager.testing();
     return 0;
 }

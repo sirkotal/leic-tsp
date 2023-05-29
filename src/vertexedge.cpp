@@ -4,10 +4,6 @@
 
 Vertex::Vertex(int id): id(id) {}
 
-/*
- * Auxiliary function to add an outgoing edge to a vertex (this),
- * with a given destination vertex (d) and edge weight (w).
- */
 Edge * Vertex::addEdge(Vertex *d, double w) {
     auto newEdge = new Edge(this, d, w);
     adj.push_back(newEdge);
@@ -15,20 +11,25 @@ Edge * Vertex::addEdge(Vertex *d, double w) {
     return newEdge;
 }
 
-/*
- * Auxiliary function to remove an outgoing edge (with a given destination (d))
- * from a vertex (this).
- * Returns true if successful, and false if such edge does not exist.
- */
 bool Vertex::removeEdge(int destID) {
     bool removedEdge = false;
     auto it = adj.begin();
     while (it != adj.end()) {
         Edge *edge = *it;
         Vertex *dest = edge->getDest();
-        if (dest->getId() == destID) {
+        if (dest->getID() == destID) {
             it = adj.erase(it);
-            deleteEdge(edge);
+            // Also remove the corresponding edge from the incoming list
+            auto it2 = dest->incoming.begin();
+            while (it2 != dest->incoming.end()) {
+                if ((*it2)->getOrig()->getID() == this->id) {
+                    it2 = dest->incoming.erase(it2);
+                }
+                else {
+                    it2++;
+                }
+            }
+            delete edge;
             removedEdge = true; // allows for multiple edges to connect the same pair of vertices (multigraph)
         }
         else {
@@ -38,28 +39,16 @@ bool Vertex::removeEdge(int destID) {
     return removedEdge;
 }
 
-/*
- * Auxiliary function to remove an outgoing edge of a vertex.
- */
-void Vertex::removeOutgoingEdges() {
-    auto it = adj.begin();
-    while (it != adj.end()) {
-        Edge *edge = *it;
-        it = adj.erase(it);
-        deleteEdge(edge);
-    }
-}
-
-bool Vertex::operator<(Vertex & vertex) const {
-    return this->dist < vertex.dist;
-}
-
-int Vertex::getId() const {
+int Vertex::getID() const {
     return this->id;
 }
 
 std::vector<Edge*> Vertex::getAdj() const {
     return this->adj;
+}
+
+int Vertex::getDistance() const {
+    return this->dist;
 }
 
 bool Vertex::isVisited() const {
@@ -74,20 +63,12 @@ unsigned int Vertex::getIndegree() const {
     return this->indegree;
 }
 
-double Vertex::getDist() const {
-    return this->dist;
-}
-
 Edge *Vertex::getPath() const {
     return this->path;
 }
 
 std::vector<Edge *> Vertex::getIncoming() const {
     return this->incoming;
-}
-
-void Vertex::setId(int id) {
-    this->id = id;
 }
 
 void Vertex::setVisited(bool visited) {
@@ -102,27 +83,12 @@ void Vertex::setIndegree(unsigned int indegree) {
     this->indegree = indegree;
 }
 
-void Vertex::setDist(double dist) {
-    this->dist = dist;
-}
-
 void Vertex::setPath(Edge *path) {
     this->path = path;
 }
 
-void Vertex::deleteEdge(Edge *edge) {
-    Vertex *dest = edge->getDest();
-    // Remove the corresponding edge from the incoming list
-    auto it = dest->incoming.begin();
-    while (it != dest->incoming.end()) {
-        if ((*it)->getOrig()->getId() == id) {
-            it = dest->incoming.erase(it);
-        }
-        else {
-            it++;
-        }
-    }
-    delete edge;
+void Vertex::setDistance(int num) {
+    this->dist = num;
 }
 
 /********************** Edge  ****************************/
@@ -145,16 +111,8 @@ Edge *Edge::getReverse() const {
     return this->reverse;
 }
 
-bool Edge::isSelected() const {
-    return this->selected;
-}
-
 double Edge::getFlow() const {
     return flow;
-}
-
-void Edge::setSelected(bool selected) {
-    this->selected = selected;
 }
 
 void Edge::setReverse(Edge *reverse) {
