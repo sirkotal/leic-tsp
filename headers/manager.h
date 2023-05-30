@@ -22,6 +22,18 @@ public:
     void buildGraph(const string &filename);
 
     /**
+     * @brief Builds a graph containing the railway's train stations
+     * @param filename The name of the file containing the train stations' data
+     */
+    void buildRealGraph(const string &filename);
+
+    /**
+     * @brief Builds a graph containing the railway's train stations
+     * @param filename The name of the file containing the train stations' data
+     */
+    void buildRealNetwork(const string &filename);
+
+    /**
      * @brief Tests if the graph was successfully created (not meant for the end user)
      */
     void testing();
@@ -32,7 +44,7 @@ private:
      */
     Graph *network;
 
-    RealGraph *real_network;
+    RealGraph real_network;
 };
 
 #endif //LEIC_TSP_MANAGER_H
