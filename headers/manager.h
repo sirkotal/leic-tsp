@@ -2,6 +2,7 @@
 #define LEIC_TSP_MANAGER_H
 #include <bits/stdc++.h>
 #include "graph.h"
+#include "realgraph.h"
 
 using namespace std;
 
@@ -30,6 +31,8 @@ private:
      * @brief The network's graph
      */
     Graph *network;
+
+    RealGraph *real_network;
 };
 
 #endif //LEIC_TSP_MANAGER_H
