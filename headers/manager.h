@@ -40,13 +40,15 @@ public:
 
     double backtrack(vector<int> &min_path);
 
+    // int numTest();
+
 private:
     /**
      * @brief The network's graph
      */
     Graph *network;
 
-    RealGraph real_network;
+    RealGraph *real_network;
 };
 
 #endif //LEIC_TSP_MANAGER_H

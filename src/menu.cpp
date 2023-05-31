@@ -44,9 +44,8 @@ void Menu::realDataBuilder(const string &n, const string &e) {
 
 void Menu::mainMenu(){
     char choice_menu, choice_submenu;
-    Menu menu = Menu();
     do{
-        menu.printMainMenu();
+        printMainMenu();
         cin >> choice_menu;
 
         if (!std::cin.fail()){
@@ -77,10 +76,10 @@ void Menu::mainMenu(){
                     break;*/
                 case 'r':
                 case 'R':
-                    menu.printBuildSubMenu();
+                    printBuildSubMenu();
                     cin >> choice_submenu;
                     if (!std::cin.fail()){
-                        menu.switchBuildSubMenu(choice_submenu);
+                        switchBuildSubMenu(choice_submenu);
                     }
                     break;
                 case '0':
@@ -121,6 +120,7 @@ void Menu::switchBuildSubMenu(char option) {
             std::cin.ignore(); //clear the buffer
             cout << endl;
             manager.buildGraph(edges);
+            manager.testing();
             break;
         case '2':
             path = path + "Extra_Fully_Connected_Graphs/";
@@ -132,7 +132,7 @@ void Menu::switchBuildSubMenu(char option) {
             manager.buildGraph(edges);
             break;
         case '3':
-            path = path + "Real-World-Graphs/";
+            /*path = path + "Real-World-Graphs/";
             cout << "Insert your routing's nodes file: ";
             cin >> nodes;
             edges = path + nodes;
@@ -143,8 +143,9 @@ void Menu::switchBuildSubMenu(char option) {
             cin >> edges;
             edges = path + edges;
             std::cin.ignore(); //clear the buffer
-            cout << endl;
-
+            cout << endl;*/
+            nodes =  "../data/Real-World-Graphs/graph1/nodes.csv";
+            edges =  "../data/Real-World-Graphs/graph1/edges.csv";
             manager.buildRealGraph(nodes);
             manager.buildRealNetwork(edges);
             break;
