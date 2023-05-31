@@ -142,3 +142,15 @@ void Manager::testing() {
     }
     cout << v->getID() << endl;
 }
+
+double Manager::backtrack(vector<int> &min_path) {
+    Vertex *v = network->findVertex(0);
+    int n = network->getNumVertex();
+    vector<bool> visit(n, false);
+    int counter = 0;
+    double distance = 0;
+    double min_distance = MAX;
+    vector<int> test;
+
+    return network->bruteforceBacktrack(v, v, counter, distance, min_distance, visit, min_path, test);
+}

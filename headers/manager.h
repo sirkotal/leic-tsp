@@ -38,6 +38,8 @@ public:
      */
     void testing();
 
+    double backtrack(vector<int> &min_path);
+
 private:
     /**
      * @brief The network's graph
