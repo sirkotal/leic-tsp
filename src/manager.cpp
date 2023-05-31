@@ -8,13 +8,15 @@
 
 Manager::Manager() {
     this->network = new Graph();
-    buildGraph(endF);
+    this->real_network = new RealGraph();
+    // buildGraph(endF);
     /*buildRealGraph(realNF);
     buildRealNetwork(realEF);*/
 }
 
 Manager::~Manager() {
     delete network;
+    delete real_network;
 }
 
 void Manager::buildGraph(const string& filename) {
@@ -56,7 +58,7 @@ void Manager::buildGraph(const string& filename) {
 
 void Manager::buildRealGraph(const string& filename) {
     string node, latitude, longitude;
-
+    int count = 0;
     ifstream thefile(filename);
 
     if (thefile.is_open())
@@ -79,7 +81,8 @@ void Manager::buildRealGraph(const string& filename) {
             double lon = stod(longitude);
             double lat = stod(latitude);
 
-            real_network.addVertex(node_id, lon, lat);
+            real_network->addVertex(node_id, lon, lat);
+            count++;
         }
         thefile.close();
     }
@@ -87,11 +90,12 @@ void Manager::buildRealGraph(const string& filename) {
     {
         cout << "Error: The program was unable to open the file.";
     }
+    cout << count << endl;
 }
 
 void Manager::buildRealNetwork(const string& filename) {
     string orig, dest, dist;
-
+    int count = 0;
     ifstream thefile(filename);
 
     if (thefile.is_open())
@@ -112,7 +116,8 @@ void Manager::buildRealNetwork(const string& filename) {
             int dest_id = stoi(dest);
             double distance = stod(dist);
 
-            real_network.addBidirectionalEdge(orig_id, dest_id, distance);
+            real_network->addBidirectionalEdge(orig_id, dest_id, distance);
+            count++;
         }
         thefile.close();
     }
@@ -120,6 +125,7 @@ void Manager::buildRealNetwork(const string& filename) {
     {
         cout << "Error: The program was unable to open the file.";
     }
+    cout << count << endl;
 }
 
 void Manager::testing() {
@@ -142,3 +148,18 @@ void Manager::testing() {
     }
     cout << v->getID() << endl;
 }
+
+double Manager::backtrack(vector<int> &min_path) {
+    Vertex *v = network->findVertex(0);
+    int n = network->getNumVertex();
+    vector<bool> visit(n, false);
+    int counter = 0;
+    double distance = 0;
+    double min_distance = MAX;
+    vector<int> test;
+    return network->bruteforceBacktrack(v, v, counter, distance, min_distance, visit, min_path, test);
+}
+
+/*int Manager::numTest() {
+    cout << real_network->getNumVertex() << endl;
+}*/
