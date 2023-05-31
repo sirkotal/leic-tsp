@@ -44,6 +44,10 @@ public:
      */
     void mainMenu();
 
+    void printBuildSubMenu();
+
+    void switchBuildSubMenu(char option);
+
 
 private:
     /**
