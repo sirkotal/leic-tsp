@@ -25,7 +25,8 @@ void Menu::printMainMenu() {
                  "| 2 - Cost Optimization                                                                               |\n"
                  "| 3 - Reliability and Sensitivity to Line Failures                                                    |\n"
                  "|                                                                                                     |\n"
-                 "| R - Create the Route graph                                                                          |\n"
+                 "| R - Create the Route Graph                                                                          |\n"
+                 "| T - Toggle Execution Time Display                                                                   |\n"
                  "|                                                                                                     |\n"
                  "| 0 - Exit Program                                                                                    |\n"
                  "-------------------------------------------------------------------------------------------------------\n"
@@ -53,11 +54,18 @@ void Menu::mainMenu(){
                 case '1': {
                     int origin = 0;
                     vector<int> min_path;
+                    auto start = chrono::high_resolution_clock::now();
                     cout << manager.backtrack(min_path) << endl;
+                    auto end = chrono::high_resolution_clock::now();
+                    auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
                     for (auto element: min_path) {
                         cout << element << "->";
                     }
                     cout << origin << endl;
+
+                    if (toggle_exec_time) {
+                        cout << "Elapsed Time: " << duration << " ms" << endl;
+                    }
                     break;
                 }
                 /*case '2':
@@ -81,6 +89,10 @@ void Menu::mainMenu(){
                     if (!std::cin.fail()){
                         switchBuildSubMenu(choice_submenu);
                     }
+                    break;
+                case 't':
+                case 'T':
+                    toggle_exec_time = true;
                     break;
                 case '0':
                     cout << "So sorry to see you go! :(\n";
