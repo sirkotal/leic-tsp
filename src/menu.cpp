@@ -64,7 +64,7 @@ void Menu::mainMenu(){
                     cout << origin << endl;
 
                     if (toggle_exec_time) {
-                        cout << "Elapsed Time: " << duration << " ms" << endl;
+                        cout << "Elapsed Time: " << duration << " s" << endl;
                     }
                     break;
                 }
@@ -92,7 +92,7 @@ void Menu::mainMenu(){
                     break;
                 case 't':
                 case 'T':
-                    toggle_exec_time = true;
+                    toggle_exec_time = !toggle_exec_time;
                     break;
                 case '0':
                     cout << "So sorry to see you go! :(\n";
