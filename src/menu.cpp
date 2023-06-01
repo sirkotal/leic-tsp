@@ -3,6 +3,7 @@
 #define MAX std::numeric_limits<double>::max()
 
 bool toggle_exec_time = false;
+bool is_real = false;
 
 Menu::Menu(): manager(Manager()) {}
 
@@ -52,6 +53,11 @@ void Menu::mainMenu(){
         if (!std::cin.fail()){
             switch(choice_menu){
                 case '1': {
+                    if (is_real) {
+                        cout << "I'm sorry, but this service isn't available right now." << endl;
+                        cout << endl;
+                        break;
+                    }
                     int origin = 0;
                     vector<int> min_path;
                     auto start = chrono::high_resolution_clock::now();
@@ -125,6 +131,7 @@ void Menu::switchBuildSubMenu(char option) {
     string path = "../data/";
     switch (option) {
         case '1':
+            is_real = false;
             path = path + "Toy-Graphs/";
             cout << "Insert your routing file: ";
             cin >> edges;
@@ -135,6 +142,7 @@ void Menu::switchBuildSubMenu(char option) {
             manager.testing();
             break;
         case '2':
+            is_real = false;
             path = path + "Extra_Fully_Connected_Graphs/";
             cout << "Insert your routing file: ";
             cin >> edges;
@@ -156,6 +164,7 @@ void Menu::switchBuildSubMenu(char option) {
             edges = path + edges;
             std::cin.ignore(); //clear the buffer
             cout << endl;*/
+            is_real = true;
             nodes =  "../data/Real-World-Graphs/graph1/nodes.csv";
             edges =  "../data/Real-World-Graphs/graph1/edges.csv";
             manager.buildRealGraph(nodes);
