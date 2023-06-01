@@ -87,6 +87,8 @@ public:
      */
     double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP);
 
+    void dfs(int id);
+
     vector<Vertex*> prim();
 private:
     /**

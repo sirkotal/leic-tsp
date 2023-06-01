@@ -140,6 +140,23 @@ double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, d
     return min_distance;
 }
 
+void Graph::dfs(int id) {
+    for (auto itr = vertexSet.begin(); itr != vertexSet.end(); itr++) {
+        (*itr)->setVisited(false);
+    }
+
+    Vertex* node = findVertex(id);
+    node->setVisited(true);
+
+    for (auto itr = node->getAdj().begin(); itr != node->getAdj().end(); itr++) {
+        Vertex* target = findVertex((*itr)->getDest()->getID());
+
+        if (!target->isVisited()) {
+            dfs((*itr)->getDest()->getID());
+        }
+    }
+}
+
 vector<Vertex *> Graph::prim() {
     MutablePriorityQueue<Vertex> q;
 
