@@ -89,7 +89,7 @@ public:
 
     void dfs(int id);
 
-    vector<Vertex*> prim();
+    vector<Vertex*> prim(int source, int target);
 private:
     /**
      * @brief A vector containing all of the graph's vertexes

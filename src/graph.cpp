@@ -157,33 +157,57 @@ void Graph::dfs(int id) {
     }
 }
 
-vector<Vertex *> Graph::prim() {
-    MutablePriorityQueue<Vertex> q;
+/**
+ * @brief Allows the sorting of the graph's vertexes by descending order of distance
+ */
+struct PriorityCompare {
+    /**
+     * @brief Sorts two vertexes by distance
+     * @param s The first vertex
+     * @param t The second vertex
+     * @return True if the first vertex's distance is bigger than the second's; otherwise, it returns false
+     */
+    bool operator()(const Vertex* s, const Vertex* t) {
+        return s->getDistance() > t->getDistance();
+    }
+};
 
-    for (auto v: vertexSet){
-        v->setDistance(HIGH);
-        v->setVisited(false);
-        q.insert(v);
+vector<Vertex*> Graph::prim(int source, int target) {
+    vector<Vertex*> path;
+    priority_queue<Vertex*, vector<Vertex*>, PriorityCompare> pq;
+    Vertex* src = findVertex(source);
+    for (auto node : vertexSet){
+        node->setVisited(false);
+        node->setDistance(INT_MAX);
     }
 
-    vertexSet[0]->setVisited(true);
-    vertexSet[0]->setPath(nullptr);
-    vertexSet[0]->setDistance(0);
+    src->setDistance(0);
+    pq.push(src);
 
-    q.decreaseKey(vertexSet[0]);
+    while (!pq.empty()) {
+        Vertex* t = pq.top();
+        pq.pop();
 
-    while (!q.empty()){
-        Vertex* u = q.extractMin();
-        for (Edge* e : u->getAdj()){
-            Vertex* w = e->getDest();
-            if (!w->isVisited() && e->getWeight() < w->getDistance()){
-                w->setPath(e);
-                w->setDistance(e->getWeight());
-                q.decreaseKey(w);
+        t->setVisited(true);
+
+        for (auto e : t->getAdj()) {
+            Vertex *v = e->getDest();
+            double w = e->getWeight();
+
+            if (!v->isVisited() && w < v->getDistance()) {
+                v->setSRC(t);
+                v->setDistance(w);
+                pq.push(v);
             }
         }
-        u->setVisited(true);
     }
+    path.clear();
+    Vertex* trg = findVertex(target);
+    while (trg != nullptr) {
+        path.push_back(trg);
+        trg = trg->getSRC();
+    }
+    reverse(path.begin(), path.end());
 
-    return this->vertexSet;
+    return path;
 }

@@ -150,6 +150,11 @@ void Manager::testing() {
 }
 
 double Manager::backtrack(vector<int> &min_path) {
+    vector<Vertex*> mst = network->prim(0, 12);
+    for (auto element: mst) {
+        cout << element->getID() << " | ";
+    }
+    cout << endl;
     Vertex *v = network->findVertex(0);
     int n = network->getNumVertex();
     vector<bool> visit(n, false);

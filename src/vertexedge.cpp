@@ -91,6 +91,14 @@ void Vertex::setDistance(int num) {
     this->dist = num;
 }
 
+Vertex* Vertex::getSRC() {
+    return this->src;
+}
+
+void Vertex::setSRC(Vertex *v) {
+    this->src = v;
+}
+
 /********************** Edge  ****************************/
 
 Edge::Edge(Vertex *orig, Vertex *dest, double w): orig(orig), dest(dest), weight(w) {}

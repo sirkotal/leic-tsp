@@ -112,6 +112,18 @@ public:
      */
     bool removeEdge(int destID);
 
+    /**
+     * @brief Gets the previous vertex
+     * @return The previous vertex
+     */
+    Vertex* getSRC();
+
+    /**
+     * @brief Sets the previous vertex
+     * @param v The previous vertex
+     */
+    void setSRC(Vertex *v);
+
 private:
     /**
      * @brief The vertex's station
@@ -154,6 +166,11 @@ private:
      * @brief The cost of reaching this vertex
      */
     int dist = INT_MAX;
+
+    /**
+     * @brief The previous vertex
+     */
+    Vertex* src = nullptr;
 };
 
 /********************** Edge  ****************************/
