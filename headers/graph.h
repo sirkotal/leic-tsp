@@ -87,6 +87,7 @@ public:
      */
     double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP);
 
+    vector<Vertex*> prim();
 private:
     /**
      * @brief A vector containing all of the graph's vertexes

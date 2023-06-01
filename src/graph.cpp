@@ -1,6 +1,7 @@
 #include "graph.h"
 
 #define MAX std::numeric_limits<double>::max()
+#define HIGH INT32_MAX
 
 /*Graph::Graph(Graph& g) {
     for (auto v : g.getVertexSet()) {
@@ -137,4 +138,35 @@ double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, d
     counter--;
 
     return min_distance;
+}
+
+vector<Vertex *> Graph::prim() {
+    MutablePriorityQueue<Vertex> q;
+
+    for (auto v: vertexSet){
+        v->setDistance(HIGH);
+        v->setVisited(false);
+        q.insert(v);
+    }
+
+    vertexSet[0]->setVisited(true);
+    vertexSet[0]->setPath(nullptr);
+    vertexSet[0]->setDistance(0);
+
+    q.decreaseKey(vertexSet[0]);
+
+    while (!q.empty()){
+        Vertex* u = q.extractMin();
+        for (Edge* e : u->getAdj()){
+            Vertex* w = e->getDest();
+            if (!w->isVisited() && e->getWeight() < w->getDistance()){
+                w->setPath(e);
+                w->setDistance(e->getWeight());
+                q.decreaseKey(w);
+            }
+        }
+        u->setVisited(true);
+    }
+
+    return this->vertexSet;
 }
