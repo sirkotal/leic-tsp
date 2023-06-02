@@ -179,7 +179,7 @@ vector<Vertex*> Graph::prim(int source, double &tspCost) {
             double w = e->getWeight();
 
             if (!v->isVisited() && w < v->getDistance()) {
-                v->setSRC(t);
+                v->setPath(e);
                 v->setDistance(w);
                 pq.push(v);
             }
@@ -195,18 +195,18 @@ vector<Vertex*> Graph::prim(int source, double &tspCost) {
     return path;
 }
 
+bool edgeCompare(const Edge* x, const Edge* y) {
+    return x->getWeight() < y->getWeight();
+}
+
 void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost) {
-    if (v == nullptr) {
-        return;
-    }
     path.push_back(v);
     v->setVisited(true);
 
-    for (auto e : v->getAdj()) {
+    for (auto* e: v->getAdj()) {
         Vertex* t = e->getDest();
-        double w = e->getWeight();
-        if (t->getSRC() == v && !t->isVisited()) {
-            cost += w;
+        if (!t->isVisited()&& t->getPath()->getOrig()->getID() == v->getID()) {
+            cost += e->getWeight();
             preorderTraversal(t, path, cost);
         }
     }
