@@ -140,23 +140,6 @@ double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, d
     return min_distance;
 }
 
-void Graph::dfs(int id) {
-    for (auto itr = vertexSet.begin(); itr != vertexSet.end(); itr++) {
-        (*itr)->setVisited(false);
-    }
-
-    Vertex* node = findVertex(id);
-    node->setVisited(true);
-
-    for (auto itr = node->getAdj().begin(); itr != node->getAdj().end(); itr++) {
-        Vertex* target = findVertex((*itr)->getDest()->getID());
-
-        if (!target->isVisited()) {
-            dfs((*itr)->getDest()->getID());
-        }
-    }
-}
-
 /**
  * @brief Allows the sorting of the graph's vertexes by descending order of distance
  */
@@ -172,13 +155,14 @@ struct PriorityCompare {
     }
 };
 
-vector<Vertex*> Graph::prim(int source, int target) {
+vector<Vertex*> Graph::prim(int source, double &tspCost) {
     vector<Vertex*> path;
     priority_queue<Vertex*, vector<Vertex*>, PriorityCompare> pq;
     Vertex* src = findVertex(source);
     for (auto node : vertexSet){
         node->setVisited(false);
         node->setDistance(INT_MAX);
+        node->setPath(nullptr);
     }
 
     src->setDistance(0);
@@ -201,13 +185,28 @@ vector<Vertex*> Graph::prim(int source, int target) {
             }
         }
     }
-    path.clear();
-    Vertex* trg = findVertex(target);
-    while (trg != nullptr) {
-        path.push_back(trg);
-        trg = trg->getSRC();
+    for (auto v: vertexSet) {
+        v->setVisited(false);
     }
-    reverse(path.begin(), path.end());
 
+    path.clear();
+
+    preorderTraversal(src, path, tspCost);
     return path;
+}
+
+void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost) {
+    if (v == nullptr) {
+        return;
+    }
+    path.push_back(v);
+
+    for (auto e : v->getAdj()) {
+        Vertex* t = e->getDest();
+        double w = e->getWeight();
+        if (t->getSRC() == v) {
+            cost += w;
+            preorderTraversal(t, path, cost);
+        }
+    }
 }

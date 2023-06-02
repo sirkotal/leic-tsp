@@ -89,7 +89,9 @@ public:
 
     void dfs(int id);
 
-    vector<Vertex*> prim(int source, int target);
+    vector<Vertex*> prim(int source, double &tspCost);
+
+    void preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost);
 private:
     /**
      * @brief A vector containing all of the graph's vertexes

@@ -23,7 +23,7 @@ void Menu::printMainMenu() {
                  "-------------------------------------------------------------------------------------------------------\n"
                  "|                                                                                                     |\n"
                  "| 1 - Backtracking                                                                                    |\n"
-                 "| 2 - Cost Optimization                                                                               |\n"
+                 "| 2 - Triangular Approximation                                                                        |\n"
                  "| 3 - Reliability and Sensitivity to Line Failures                                                    |\n"
                  "|                                                                                                     |\n"
                  "| R - Create the Route Graph                                                                          |\n"
@@ -61,9 +61,10 @@ void Menu::mainMenu(){
                     int origin = 0;
                     vector<int> min_path;
                     auto start = chrono::high_resolution_clock::now();
-                    cout << manager.backtrack(min_path) << endl;
+                    cout << "Cost: " << manager.backtrack(min_path) << endl;
                     auto end = chrono::high_resolution_clock::now();
                     auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+                    cout << "Path: ";
                     for (auto element: min_path) {
                         cout << element << "->";
                     }
@@ -74,14 +75,23 @@ void Menu::mainMenu(){
                     }
                     break;
                 }
-                /*case '2':
-                    menu.printSubMenu2();
-                    cin >> choice_submenu;
-                    if (!std::cin.fail()){
-                        menu.switchSubMenu2(choice_submenu);
+                case '2': {
+                    int counter = 1;
+                    double cost;
+                    vector<Vertex *> res = manager.triangularApproximation(cost);
+                    cout << "Path: ";
+                    for (auto element: res) {
+                        cout << element->getID();
+                        if (counter != res.size()) {
+                            cout << " -> ";
+                        }
+                        counter++;
                     }
+                    cout << endl;
+                    cout << "Cost: " << cost << endl;
                     break;
-                case '3':
+                }
+                /*case '3':
                     menu.printSubMenu3();
                     cin >> choice_submenu;
                     if (!std::cin.fail()){
@@ -139,7 +149,7 @@ void Menu::switchBuildSubMenu(char option) {
             std::cin.ignore(); //clear the buffer
             cout << endl;
             manager.buildGraph(edges);
-            manager.testing();
+            //manager.testing();
             break;
         case '2':
             is_real = false;

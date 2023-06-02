@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+// #include "gnuplot-iostream.h"
 #include "manager.h"
 
 using namespace std;
