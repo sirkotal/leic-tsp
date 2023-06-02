@@ -78,7 +78,10 @@ void Menu::mainMenu(){
                 case '2': {
                     int counter = 1;
                     double cost;
+                    auto start = chrono::high_resolution_clock::now();
                     vector<Vertex *> res = manager.triangularApproximation(cost);
+                    auto end = chrono::high_resolution_clock::now();
+                    auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
                     cout << "Path: ";
                     for (auto element: res) {
                         cout << element->getID();
@@ -89,6 +92,9 @@ void Menu::mainMenu(){
                     }
                     cout << endl;
                     cout << "Cost: " << cost << endl;
+                    if (toggle_exec_time) {
+                        cout << "Elapsed Time: " << duration << " s" << endl;
+                    }
                     break;
                 }
                 /*case '3':
