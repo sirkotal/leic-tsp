@@ -124,6 +124,10 @@ public:
      */
     void setSRC(Vertex *v);
 
+    std::vector<Edge *> aux;
+
+    void addAuxEdge(Vertex *d, double w);
+
 private:
     /**
      * @brief The vertex's station

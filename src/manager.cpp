@@ -161,6 +161,10 @@ double Manager::backtrack(vector<int> &min_path) {
 }
 
 vector<Vertex*> Manager::triangularApproximation(double &cost) {
-    vector<Vertex*> mst = network->prim(0, cost);
-    return mst;
+    vector<Edge*> mst;
+    vector<Vertex*> path;
+    Vertex* origin = network->findVertex(0);
+    network->prim(mst, cost);
+    network->preorderTraversal(origin, path, cost);
+    return path;
 }

@@ -144,69 +144,79 @@ double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, d
  * @brief Allows the sorting of the graph's vertexes by descending order of distance
  */
 struct PriorityCompare {
-    /**
-     * @brief Sorts two vertexes by distance
-     * @param s The first vertex
-     * @param t The second vertex
-     * @return True if the first vertex's distance is bigger than the second's; otherwise, it returns false
-     */
-    bool operator()(const Vertex* s, const Vertex* t) {
-        return s->getDistance() > t->getDistance();
+    bool operator()(const Edge* x, const Edge* y) {
+        return x->getWeight() > y->getWeight();
     }
 };
 
-vector<Vertex*> Graph::prim(int source, double &tspCost) {
-    vector<Vertex*> path;
-    priority_queue<Vertex*, vector<Vertex*>, PriorityCompare> pq;
-    Vertex* src = findVertex(source);
-    for (auto node : vertexSet){
-        node->setVisited(false);
-        node->setDistance(INT_MAX);
-        node->setPath(nullptr);
+void Graph::prim(vector<Edge*> mst, double &tspCost) {
+    priority_queue<Edge*, vector<Edge*>, PriorityCompare> pq;
+
+    Vertex* src = this->findVertex(0);
+
+    // Add the edges connected to the source vertex to the priority queue
+    for (auto e : src->getAdj()) {
+        if (e->getOrig() == src)
+            pq.push(e);
     }
 
-    src->setDistance(0);
-    pq.push(src);
+    src->setVisited(true);
 
     while (!pq.empty()) {
-        Vertex* t = pq.top();
+        Edge* e = pq.top();
         pq.pop();
 
-        t->setVisited(true);
+        Vertex* u = e->getOrig();
+        Vertex* v = e->getDest();
 
-        for (auto e : t->getAdj()) {
-            Vertex *v = e->getDest();
-            double w = e->getWeight();
+        if (v->isVisited())
+            continue;
 
-            if (!v->isVisited() && w < v->getDistance()) {
-                v->setSRC(t);
-                v->setDistance(w);
-                pq.push(v);
+        v->setVisited(true);
+
+        mst.push_back(e);
+
+        for (const auto& neighbor : this->vertexSet) {
+            if (neighbor == v) {
+                for (auto edge : neighbor->getAdj()){
+                    if(!edge->getDest()->isVisited()){
+                        pq.push(edge);
+                    }
+                }
             }
         }
     }
-    for (auto v: vertexSet) {
-        v->setVisited(false);
+    for (auto element: mst) {
+        //cout << element->getOrig()->getID() << "->" << element->getDest()->getID() << " ";
+        Vertex* o = element->getOrig();
+        Vertex* d = element->getDest();
+        o->addAuxEdge(d, element->getWeight());
+        d->addAuxEdge(o, element->getWeight());
     }
 
-    path.clear();
+    for (auto node : vertexSet){
+        node->setVisited(false);
+    }
 
-    preorderTraversal(src, path, tspCost);
-    return path;
+    /*for (auto element: findVertex(1)->aux) {
+        cout << element->getDest()->getID() << endl;
+    }*/
 }
 
-void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost) {
-    if (v == nullptr) {
-        return;
+void Graph::preorderTraversal(Vertex* n, vector<Vertex*> &path, double &cost) {
+    if (n->getID() == 0) {
+        path.push_back(n);
+        n->setVisited(true);
     }
-    path.push_back(v);
-    v->setVisited(true);
 
-    for (auto e : v->getAdj()) {
+    for (auto e: n->aux) {
         Vertex* t = e->getDest();
         double w = e->getWeight();
-        if (t->getSRC() == v && !t->isVisited()) {
+        if (!t->isVisited()) {
+            t->setVisited(true);
+            path.push_back(t);
             cost += w;
+            cout << n->getID() << " | " << t->getID() << " | " << e->getWeight() << " | " << cost << endl;
             preorderTraversal(t, path, cost);
         }
     }

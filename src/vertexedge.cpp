@@ -11,6 +11,11 @@ Edge * Vertex::addEdge(Vertex *d, double w) {
     return newEdge;
 }
 
+void Vertex::addAuxEdge(Vertex *d, double w) {
+    auto newEdge = new Edge(this, d, w);
+    aux.push_back(newEdge);
+}
+
 bool Vertex::removeEdge(int destID) {
     bool removedEdge = false;
     auto it = adj.begin();
