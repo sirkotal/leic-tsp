@@ -200,11 +200,12 @@ void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost) {
         return;
     }
     path.push_back(v);
+    v->setVisited(true);
 
     for (auto e : v->getAdj()) {
         Vertex* t = e->getDest();
         double w = e->getWeight();
-        if (t->getSRC() == v) {
+        if (t->getSRC() == v && !t->isVisited()) {
             cost += w;
             preorderTraversal(t, path, cost);
         }

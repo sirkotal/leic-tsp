@@ -77,7 +77,7 @@ void Menu::mainMenu(){
                 }
                 case '2': {
                     int counter = 1;
-                    double cost;
+                    double cost = 0;
                     auto start = chrono::high_resolution_clock::now();
                     vector<Vertex *> res = manager.triangularApproximation(cost);
                     auto end = chrono::high_resolution_clock::now();
@@ -158,7 +158,7 @@ void Menu::switchBuildSubMenu(char option) {
             //manager.testing();
             break;
         case '2':
-            is_real = false;
+            is_real = true;
             path = path + "Extra_Fully_Connected_Graphs/";
             cout << "Insert your routing file: ";
             cin >> edges;
