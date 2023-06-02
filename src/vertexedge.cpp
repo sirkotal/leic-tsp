@@ -99,6 +99,10 @@ void Vertex::setSRC(Vertex *v) {
     this->src = v;
 }
 
+bool Vertex::operator<(Vertex & v2) const {
+    return this->getDistance() < v2.getDistance();
+}
+
 /********************** Edge  ****************************/
 
 Edge::Edge(Vertex *orig, Vertex *dest, double w): orig(orig), dest(dest), weight(w) {}

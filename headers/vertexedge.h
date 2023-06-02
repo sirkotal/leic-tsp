@@ -124,6 +124,8 @@ public:
      */
     void setSRC(Vertex *v);
 
+    bool operator<(Vertex & v2) const;
+
 private:
     /**
      * @brief The vertex's station
