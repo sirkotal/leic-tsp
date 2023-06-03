@@ -86,7 +86,7 @@ public:
      * @param pathTSP The current path
      * @return The minimum distance between the two nodes
      */
-    double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP);
+    double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<int> &min_path, vector<int> &pathTSP);
 
     vector<Vertex*> prim(int source, double &tspCost, Graph &mst_graph);
 
