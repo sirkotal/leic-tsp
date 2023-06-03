@@ -92,6 +92,9 @@ public:
     vector<Vertex*> prim(int source, double &tspCost);
 
     void preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost);
+
+    double myHeuristic(Vertex* current, Vertex* start, double dist, vector<int> &pathTSP, int size);
+
 private:
     /**
      * @brief A vector containing all of the graph's vertexes
@@ -104,6 +107,7 @@ private:
      * @return True if the vertex was successfully removed; if the vertex does not exist, it returns false
      */
     bool removeVertex(int id);
+
 };
 
 #endif //LEIC_TSP_GRAPH_H

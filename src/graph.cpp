@@ -211,3 +211,50 @@ void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost) {
         }
     }
 }
+
+
+double Graph::myHeuristic(Vertex* current, Vertex* start, double dist, vector<int> &pathTSP, int size){
+
+
+    //vamos somente entrar com :
+    //start & pathTSP
+
+    current->setVisited(true);
+    pathTSP.push_back(current->getID());
+
+    if(size == pathTSP.size()){
+    //ended, put 0 and add the final distance
+        pathTSP.push_back(start->getID());
+        for(auto i : current->getAdj())
+        {
+            if(i->getDest() == start)
+            {
+                dist += i->getWeight();
+                current = start;
+                return dist;
+            }
+        }
+    }
+    else {
+        double minCurrentDist = MAX;
+        Vertex *minVertex;
+        for (auto a: current->getAdj()) {
+            if (!a->getDest()->isVisited()) {
+                double newDist = a->getWeight();
+                if (newDist < minCurrentDist) {
+                    minCurrentDist = newDist;
+                    minVertex = a->getDest();
+                }
+            }
+        }
+        dist = myHeuristic(minVertex, start, (dist + minCurrentDist), pathTSP, size);
+    }
+
+
+    //TODO
+    // 2opt
+    // use this: Vertex* current, Vertex* start, double dist, vector<int> &pathTSP, int size
+
+
+    return dist;
+}
