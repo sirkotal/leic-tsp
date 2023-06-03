@@ -126,6 +126,8 @@ public:
 
     bool operator<(Vertex & v2) const;
 
+    int queueIndex = 0;
+
 private:
     /**
      * @brief The vertex's station

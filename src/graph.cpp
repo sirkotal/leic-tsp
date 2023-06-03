@@ -195,10 +195,6 @@ vector<Vertex*> Graph::prim(int source, double &tspCost) {
     return path;
 }
 
-bool edgeCompare(const Edge* x, const Edge* y) {
-    return x->getWeight() < y->getWeight();
-}
-
 void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost) {
     path.push_back(v);
     v->setVisited(true);
