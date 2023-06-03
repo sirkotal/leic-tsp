@@ -47,7 +47,7 @@ std::vector<Edge*> Vertex::getAdj() const {
     return this->adj;
 }
 
-int Vertex::getDistance() const {
+double Vertex::getDistance() const {
     return this->dist;
 }
 
@@ -87,7 +87,7 @@ void Vertex::setPath(Edge *path) {
     this->path = path;
 }
 
-void Vertex::setDistance(int num) {
+void Vertex::setDistance(double num) {
     this->dist = num;
 }
 

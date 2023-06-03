@@ -1,22 +1,6 @@
 #include "graph.h"
 
 #define MAX std::numeric_limits<double>::max()
-#define HIGH INT32_MAX
-
-/*Graph::Graph(Graph& g) {
-    for (auto v : g.getVertexSet()) {
-        addVertex(v->getStation());
-    }
-
-    for (auto v : g.getVertexSet()) {
-        auto v_copy = findVertex(v->getStation().getName());
-        for (auto e : v->getAdj()) {
-            auto w = e->getDest();
-            auto w_copy = findVertex(w->getStation().getName());
-            addEdge(v_copy->getStation().getName(), w_copy->getStation().getName(), e->getWeight(), e->getService());
-        }
-    }
-}*/
 
 Vertex* Graph::findVertex(int id) const {
     for (auto v: vertexSet) {
@@ -155,22 +139,28 @@ struct PriorityCompare {
     }
 };
 
-vector<Vertex*> Graph::prim(int source, double &tspCost) {
+vector<Vertex*> Graph::prim(Graph &def, int source, double &tspCost, Graph &mst_graph) {
     vector<Vertex*> path;
-    priority_queue<Vertex*, vector<Vertex*>, PriorityCompare> pq;
+
+    MutablePriorityQueue<Vertex> pq;
     Vertex* src = findVertex(source);
-    for (auto node : vertexSet){
+
+    for (auto node : vertexSet) {
+        mst_graph.addVertex(node->getID());
         node->setVisited(false);
-        node->setDistance(INT_MAX);
+        node->setDistance(MAX);
         node->setPath(nullptr);
     }
 
     src->setDistance(0);
-    pq.push(src);
+    pq.insert(src);
 
     while (!pq.empty()) {
-        Vertex* t = pq.top();
-        pq.pop();
+        Vertex* t = pq.extractMin();
+
+        if (t->isVisited()) {
+            continue;
+        }
 
         t->setVisited(true);
 
@@ -181,7 +171,13 @@ vector<Vertex*> Graph::prim(int source, double &tspCost) {
             if (!v->isVisited() && w < v->getDistance()) {
                 v->setPath(e);
                 v->setDistance(w);
-                pq.push(v);
+                double prev_dist = v->getDistance();
+                if (prev_dist == MAX) {
+                    pq.insert(v);
+                }
+                else {
+                    pq.decreaseKey(v);
+                }
             }
         }
     }
