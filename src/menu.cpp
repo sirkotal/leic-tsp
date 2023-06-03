@@ -4,6 +4,7 @@
 
 bool toggle_exec_time = false;
 bool is_real = false;
+bool real_chosen = false;
 
 Menu::Menu(): manager(Manager()) {}
 
@@ -78,6 +79,25 @@ void Menu::mainMenu(){
                 case '2': {
                     /*string path = "../data/Toy-Graphs/shipping.csv";
                     manager.buildGraph(path);*/
+                    if (real_chosen) {
+                        double cost = 0;
+                        auto start = chrono::high_resolution_clock::now();
+                        vector<RealVertex *> res = manager.realTriangularApprox(cost);
+                        auto end = chrono::high_resolution_clock::now();
+                        auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+                        cout << "Path: ";
+                        for (auto element: res) {
+                            cout << element->getID();
+                            cout << " -> ";
+                        }
+                        cout << "0" << endl;
+                        cout << endl;
+                        cout << "Cost: " << cost << endl;
+                        if (toggle_exec_time) {
+                            cout << "Elapsed Time: " << duration << " s" << endl;
+                        }
+                        break;
+                    }
                     double cost = 0;
                     auto start = chrono::high_resolution_clock::now();
                     vector<Vertex *> res = manager.triangularApproximation(cost);
@@ -180,6 +200,7 @@ void Menu::switchBuildSubMenu(char option) {
             std::cin.ignore(); //clear the buffer
             cout << endl;*/
             is_real = true;
+            real_chosen = true;
             nodes =  "../data/Real-World-Graphs/graph2/nodes.csv";
             edges =  "../data/Real-World-Graphs/graph2/edges.csv";
             manager.buildRealGraph(nodes);

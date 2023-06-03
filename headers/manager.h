@@ -42,6 +42,8 @@ public:
 
     vector<Vertex*> triangularApproximation(double &cost);
 
+    vector<RealVertex*> realTriangularApprox(double &cost);
+
     // int numTest();
 
 private:

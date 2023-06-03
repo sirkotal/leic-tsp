@@ -169,3 +169,11 @@ vector<Vertex*> Manager::triangularApproximation(double &cost) {
     cost += network->costCalculation((*(path.rbegin())), network->findVertex(src));
     return path;
 }
+
+vector<RealVertex*> Manager::realTriangularApprox(double &cost) {
+    int src = 0;
+    RealGraph mst = RealGraph();
+    vector<RealVertex*> path = real_network.prim(src, cost, mst);
+    cost += real_network.costCalculation((*(path.rbegin())), real_network.findVertex(src));
+    return path;
+}
