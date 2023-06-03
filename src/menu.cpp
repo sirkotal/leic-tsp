@@ -66,7 +66,7 @@ void Menu::mainMenu(){
                     auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
                     cout << "Path: ";
                     for (auto element: min_path) {
-                        cout << element << "->";
+                        cout << element << " -> ";
                     }
                     cout << origin << endl;
 
@@ -76,7 +76,8 @@ void Menu::mainMenu(){
                     break;
                 }
                 case '2': {
-                    int counter = 1;
+                    /*string path = "../data/Toy-Graphs/shipping.csv";
+                    manager.buildGraph(path);*/
                     double cost = 0;
                     auto start = chrono::high_resolution_clock::now();
                     vector<Vertex *> res = manager.triangularApproximation(cost);
@@ -85,11 +86,9 @@ void Menu::mainMenu(){
                     cout << "Path: ";
                     for (auto element: res) {
                         cout << element->getID();
-                        if (counter != res.size()) {
-                            cout << " -> ";
-                        }
-                        counter++;
+                        cout << " -> ";
                     }
+                    cout << "0" << endl;
                     cout << endl;
                     cout << "Cost: " << cost << endl;
                     if (toggle_exec_time) {

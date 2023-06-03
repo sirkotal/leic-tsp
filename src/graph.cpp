@@ -139,7 +139,7 @@ struct PriorityCompare {
     }
 };
 
-vector<Vertex*> Graph::prim(Graph &def, int source, double &tspCost, Graph &mst_graph) {
+vector<Vertex*> Graph::prim(int source, double &tspCost, Graph &mst_graph) {
     vector<Vertex*> path;
 
     MutablePriorityQueue<Vertex> pq;
@@ -164,6 +164,10 @@ vector<Vertex*> Graph::prim(Graph &def, int source, double &tspCost, Graph &mst_
 
         t->setVisited(true);
 
+        if (t->getID() != src->getID()) {
+            mst_graph.addBidirectionalEdge(t->getPath()->getOrig()->getID(), t->getID(), t->getPath()->getWeight());
+        }
+
         for (auto e : t->getAdj()) {
             Vertex *v = e->getDest();
             double w = e->getWeight();
@@ -181,25 +185,59 @@ vector<Vertex*> Graph::prim(Graph &def, int source, double &tspCost, Graph &mst_
             }
         }
     }
+
+    Vertex* mst_src = mst_graph.findVertex(source);
     for (auto v: vertexSet) {
         v->setVisited(false);
     }
 
     path.clear();
+    int id;
+    preorderTraversal(mst_src, path, tspCost, id);
 
-    preorderTraversal(src, path, tspCost);
+    /*for (auto element: mst_graph.vertexSet) {
+        cout << element->getID() << endl;
+    }*/
+
     return path;
 }
 
-void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost) {
-    path.push_back(v);
+void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost, int &prev_id) {
+    unsigned int signal = 1;
+    Vertex* x = this->findVertex(v->getID());
+    // cout << "(" << x->getID() << ")" << endl;
+    path.push_back(x);
     v->setVisited(true);
 
-    for (auto* e: v->getAdj()) {
+    for (auto e: v->getAdj()) {
         Vertex* t = e->getDest();
-        if (!t->isVisited()&& t->getPath()->getOrig()->getID() == v->getID()) {
+        if (!t->isVisited() && signal) {
+            prev_id = t->getID();
             cost += e->getWeight();
-            preorderTraversal(t, path, cost);
+        }
+        else if (!t->isVisited()) {
+            Vertex* s = findVertex(prev_id);
+            cost += costCalculation(s, t);
+            prev_id = t->getID();
+        }
+        signal = 0;
+
+        if (!t->isVisited()) {
+            preorderTraversal(t, path, cost, prev_id);
         }
     }
+}
+
+double Graph::costCalculation(Vertex* s, Vertex* t) {
+    if (s == nullptr) {
+        return 0.0;
+    }
+
+    for (auto e: s->getAdj()) {
+        if (e->getDest()->getID() == t->getID()) {
+            return e->getWeight();
+        }
+    }
+
+    return 0.0;
 }

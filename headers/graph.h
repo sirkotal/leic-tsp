@@ -19,7 +19,6 @@ using namespace std;
 class Graph {
 public:
     Graph() {};
-    Graph(Graph& g);
 
     /**
      * @brief Finds a vertex in the graph with the given id
@@ -88,9 +87,11 @@ public:
      */
     double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP);
 
-    vector<Vertex*> prim(Graph &def, int source, double &tspCost, Graph &mst_graph);
+    vector<Vertex*> prim(int source, double &tspCost, Graph &mst_graph);
 
-    void preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost);
+    void preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost, int &prev_id);
+
+    double costCalculation(Vertex* s, Vertex* t);
 private:
     /**
      * @brief A vector containing all of the graph's vertexes

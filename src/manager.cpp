@@ -161,6 +161,9 @@ double Manager::backtrack(vector<int> &min_path) {
 }
 
 vector<Vertex*> Manager::triangularApproximation(double &cost) {
-    vector<Vertex*> mst = network->prim(0, cost);
-    return mst;
+    int src = 0;
+    Graph mst = Graph();
+    vector<Vertex*> path = network->prim(src, cost, mst);
+    cost += network->costCalculation((*(path.rbegin())), network->findVertex(src));
+    return path;
 }
