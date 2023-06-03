@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <queue>
 #include <limits>
 #include <algorithm>
@@ -71,7 +72,7 @@ public:
      * @brief Gets the graph's vertexes
      * @return A vector with all of the graph's vertexes
      */
-    vector<Vertex*> getVertexSet() const;
+    unordered_map<int, Vertex*> getVertexSet() const;
 
     /**
      * @brief Calculates the shortest path starting at one point and ending in another while going through every node of the graph
@@ -85,7 +86,7 @@ public:
      * @param pathTSP The current path
      * @return The minimum distance between the two nodes
      */
-    double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP);
+    double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<int> &min_path, vector<int> &pathTSP);
 
     vector<Vertex*> prim(int source, double &tspCost, Graph &mst_graph);
 
@@ -96,7 +97,7 @@ private:
     /**
      * @brief A vector containing all of the graph's vertexes
      */
-    vector<Vertex*> vertexSet;    // vertex set
+    unordered_map<int, Vertex*> vertexSet;    // vertex set
 
     /**
      * @brief Removes a vertex from the graph

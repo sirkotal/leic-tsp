@@ -62,6 +62,7 @@ void Menu::mainMenu(){
                     vector<int> min_path;
                     auto start = chrono::high_resolution_clock::now();
                     cout << "Cost: " << manager.backtrack(min_path) << endl;
+                    cout << endl;
                     auto end = chrono::high_resolution_clock::now();
                     auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
                     cout << "Path: ";

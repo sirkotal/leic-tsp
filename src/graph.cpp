@@ -4,8 +4,8 @@
 
 Vertex* Graph::findVertex(int id) const {
     for (auto v: vertexSet) {
-        if (v->getID() == id) {
-            return v;
+        if (v.first == id) {
+            return v.second;
         }
     }
 
@@ -17,7 +17,7 @@ bool Graph::addVertex(int id) {
         return false;
     }
 
-    vertexSet.push_back(new Vertex(id));
+    vertexSet.emplace(id, new Vertex(id));
     return true;
 }
 
@@ -35,9 +35,8 @@ bool Graph::removeVertex(int id) {
     }
 
     for (auto itr = vertexSet.begin(); itr != vertexSet.end(); itr++) {
-        if ((*itr)->getID() == id) {
+        if ((*itr).first == id) {
             vertexSet.erase(itr);
-            itr--;
             break;
         }
     }
@@ -47,8 +46,8 @@ bool Graph::removeVertex(int id) {
 }
 
 bool Graph::addEdge(int source, int dest, double weight) {
-    auto v1 = findVertex(source);
-    auto v2 = findVertex(dest);
+    auto v1 = vertexSet[source];
+    auto v2 = vertexSet[dest];
     if (v1 == nullptr || v2 == nullptr) {
         return false;
     }
@@ -58,8 +57,8 @@ bool Graph::addEdge(int source, int dest, double weight) {
 }
 
 bool Graph::addBidirectionalEdge(int source, int dest, double weight) {
-    auto v1 = findVertex(source);
-    auto v2 = findVertex(dest);
+    auto v1 = vertexSet[source];
+    auto v2 = vertexSet[dest];
     if (v1 == nullptr || v2 == nullptr) {
         return false;
     }
@@ -77,25 +76,25 @@ int Graph::getNumVertex() const {
     return this->vertexSet.size();
 }
 
-vector<Vertex *> Graph::getVertexSet() const {
+unordered_map<int, Vertex*> Graph::getVertexSet() const {
     return this->vertexSet;
 }
 
 int Graph::getNumEdges() const {
     int res = 0;
     for (auto v: vertexSet) {
-        res += v->getAdj().size();
+        res += v.second->getAdj().size();
     }
     return res;
 }
 
 double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance,
-                                double min_distance, vector<bool> &visited, vector<int> &min_path, vector<int> &pathTSP) {
-    visited[current->getID()] = true;
+                                double min_distance, vector<int> &min_path, vector<int> &pathTSP) {
+    current->setVisited(true);
     pathTSP.push_back(current->getID());
     counter++;
 
-    if (counter == visited.size()) {
+    if (counter == getNumVertex()) {
         for (auto e : current->getAdj()) {
             if (e->getDest() == start) {
                 double total_distance = distance + e->getWeight();
@@ -110,14 +109,14 @@ double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, d
     else {
         for (auto e : current->getAdj()) {
             Vertex* adj = e->getDest();
-            if (!visited[adj->getID()]) {
+            if (!adj->isVisited()) {
                 double updated_distance = distance + e->getWeight();
-                min_distance = bruteforceBacktrack(adj, start, counter, updated_distance, min_distance, visited, min_path, pathTSP);
+                min_distance = bruteforceBacktrack(adj, start, counter, updated_distance, min_distance, min_path, pathTSP);
             }
         }
     }
 
-    visited[current->getID()] = false;
+    current->setVisited(false);
     pathTSP.pop_back();
     counter--;
 
@@ -143,13 +142,13 @@ vector<Vertex*> Graph::prim(int source, double &tspCost, Graph &mst_graph) {
     vector<Vertex*> path;
 
     MutablePriorityQueue<Vertex> pq;
-    Vertex* src = findVertex(source);
+    Vertex* src = vertexSet[source];
 
     for (auto node : vertexSet) {
-        mst_graph.addVertex(node->getID());
-        node->setVisited(false);
-        node->setDistance(MAX);
-        node->setPath(nullptr);
+        mst_graph.addVertex(node.second->getID());
+        node.second->setVisited(false);
+        node.second->setDistance(MAX);
+        node.second->setPath(nullptr);
     }
 
     src->setDistance(0);
@@ -186,9 +185,9 @@ vector<Vertex*> Graph::prim(int source, double &tspCost, Graph &mst_graph) {
         }
     }
 
-    Vertex* mst_src = mst_graph.findVertex(source);
+    Vertex* mst_src = mst_graph.vertexSet[source];
     for (auto v: vertexSet) {
-        v->setVisited(false);
+        v.second->setVisited(false);
     }
 
     path.clear();
@@ -216,7 +215,7 @@ void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost, in
             cost += e->getWeight();
         }
         else if (!t->isVisited()) {
-            Vertex* s = findVertex(prev_id);
+            Vertex* s = vertexSet[prev_id];
             cost += costCalculation(s, t);
             prev_id = t->getID();
         }
