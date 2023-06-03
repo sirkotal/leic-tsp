@@ -40,6 +40,8 @@ public:
 
     double backtrack(vector<int> &min_path);
 
+    vector<Vertex*> triangularApproximation(double &cost);
+
     // int numTest();
 
 private:

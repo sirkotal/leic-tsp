@@ -160,6 +160,10 @@ double Manager::backtrack(vector<int> &min_path) {
     return network->bruteforceBacktrack(v, v, counter, distance, min_distance, visit, min_path, test);
 }
 
-/*int Manager::numTest() {
-    cout << real_network->getNumVertex() << endl;
-}*/
+vector<Vertex*> Manager::triangularApproximation(double &cost) {
+    int src = 0;
+    Graph mst = Graph();
+    vector<Vertex*> path = network->prim(src, cost, mst);
+    cost += network->costCalculation((*(path.rbegin())), network->findVertex(src));
+    return path;
+}

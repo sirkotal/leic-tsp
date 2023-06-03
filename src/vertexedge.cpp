@@ -47,7 +47,7 @@ std::vector<Edge*> Vertex::getAdj() const {
     return this->adj;
 }
 
-int Vertex::getDistance() const {
+double Vertex::getDistance() const {
     return this->dist;
 }
 
@@ -87,8 +87,20 @@ void Vertex::setPath(Edge *path) {
     this->path = path;
 }
 
-void Vertex::setDistance(int num) {
+void Vertex::setDistance(double num) {
     this->dist = num;
+}
+
+Vertex* Vertex::getSRC() {
+    return this->src;
+}
+
+void Vertex::setSRC(Vertex *v) {
+    this->src = v;
+}
+
+bool Vertex::operator<(Vertex & v2) const {
+    return this->getDistance() < v2.getDistance();
 }
 
 /********************** Edge  ****************************/

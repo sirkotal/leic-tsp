@@ -2,21 +2,6 @@
 
 #define MAX std::numeric_limits<double>::max()
 
-/*Graph::Graph(Graph& g) {
-    for (auto v : g.getVertexSet()) {
-        addVertex(v->getStation());
-    }
-
-    for (auto v : g.getVertexSet()) {
-        auto v_copy = findVertex(v->getStation().getName());
-        for (auto e : v->getAdj()) {
-            auto w = e->getDest();
-            auto w_copy = findVertex(w->getStation().getName());
-            addEdge(v_copy->getStation().getName(), w_copy->getStation().getName(), e->getWeight(), e->getService());
-        }
-    }
-}*/
-
 Vertex* Graph::findVertex(int id) const {
     for (auto v: vertexSet) {
         if (v->getID() == id) {
@@ -137,4 +122,122 @@ double Graph::bruteforceBacktrack(Vertex* current, Vertex* start, int counter, d
     counter--;
 
     return min_distance;
+}
+
+/**
+ * @brief Allows the sorting of the graph's vertexes by descending order of distance
+ */
+struct PriorityCompare {
+    /**
+     * @brief Sorts two vertexes by distance
+     * @param s The first vertex
+     * @param t The second vertex
+     * @return True if the first vertex's distance is bigger than the second's; otherwise, it returns false
+     */
+    bool operator()(const Vertex* s, const Vertex* t) {
+        return s->getDistance() > t->getDistance();
+    }
+};
+
+vector<Vertex*> Graph::prim(int source, double &tspCost, Graph &mst_graph) {
+    vector<Vertex*> path;
+
+    MutablePriorityQueue<Vertex> pq;
+    Vertex* src = findVertex(source);
+
+    for (auto node : vertexSet) {
+        mst_graph.addVertex(node->getID());
+        node->setVisited(false);
+        node->setDistance(MAX);
+        node->setPath(nullptr);
+    }
+
+    src->setDistance(0);
+    pq.insert(src);
+
+    while (!pq.empty()) {
+        Vertex* t = pq.extractMin();
+
+        if (t->isVisited()) {
+            continue;
+        }
+
+        t->setVisited(true);
+
+        if (t->getID() != src->getID()) {
+            mst_graph.addBidirectionalEdge(t->getPath()->getOrig()->getID(), t->getID(), t->getPath()->getWeight());
+        }
+
+        for (auto e : t->getAdj()) {
+            Vertex *v = e->getDest();
+            double w = e->getWeight();
+
+            if (!v->isVisited() && w < v->getDistance()) {
+                v->setPath(e);
+                double prev_dist = v->getDistance();
+                v->setDistance(w);
+                if (prev_dist == MAX) {
+                    pq.insert(v);
+                }
+                else {
+                    pq.decreaseKey(v);
+                }
+            }
+        }
+    }
+
+    Vertex* mst_src = mst_graph.findVertex(source);
+    for (auto v: vertexSet) {
+        v->setVisited(false);
+    }
+
+    path.clear();
+    int id;
+    preorderTraversal(mst_src, path, tspCost, id);
+
+    /*for (auto element: mst_graph.vertexSet) {
+        cout << element->getID() << endl;
+    }*/
+
+    return path;
+}
+
+void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost, int &prev_id) {
+    unsigned int signal = 1;
+    Vertex* x = this->findVertex(v->getID());
+    // cout << "(" << x->getID() << ")" << endl;
+    path.push_back(x);
+    v->setVisited(true);
+
+    for (auto e: v->getAdj()) {
+        Vertex* t = e->getDest();
+        if (!t->isVisited() && signal) {
+            prev_id = t->getID();
+            cost += e->getWeight();
+        }
+        else if (!t->isVisited()) {
+            Vertex* s = findVertex(prev_id);
+            cost += costCalculation(s, t);
+            prev_id = t->getID();
+        }
+        signal = 0;
+
+        if (!t->isVisited()) {
+            preorderTraversal(t, path, cost, prev_id);
+        }
+    }
+}
+
+double Graph::costCalculation(Vertex* s, Vertex* t) {
+    if (s == nullptr) {
+        return 0.0;
+    }
+
+    for (auto e: s->getAdj()) {
+        if (e->getDest()->getID() == t->getID()) {
+            return e->getWeight();
+        }
+    }
+
+    return 0.0;
 }
