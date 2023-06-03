@@ -55,7 +55,7 @@ std::vector<RealEdge*> RealVertex::getAdj() const {
     return this->adj;
 }
 
-int RealVertex::getDistance() const {
+double RealVertex::getDistance() const {
     return this->dist;
 }
 
@@ -95,7 +95,7 @@ void RealVertex::setPath(RealEdge *path) {
     this->path = path;
 }
 
-void RealVertex::setDistance(int num) {
+void RealVertex::setDistance(double num) {
     this->dist = num;
 }
 

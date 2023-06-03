@@ -92,7 +92,7 @@ vector<RealVertex*> RealGraph::prim(int source, double &tspCost, RealGraph &mst_
     vector<RealVertex*> path;
 
     MutablePriorityQueue<RealVertex> pq;
-    RealVertex* src = findVertex(source);
+    RealVertex* src = vertexSet[source];
 
     for (auto node : vertexSet) {
         mst_graph.addVertex(node.second->getID(), node.second->getLongitude(), node.second->getLatitude());
@@ -135,7 +135,7 @@ vector<RealVertex*> RealGraph::prim(int source, double &tspCost, RealGraph &mst_
         }
     }
 
-    RealVertex* mst_src = mst_graph.findVertex(source);
+    RealVertex* mst_src = mst_graph.vertexSet[source];
     for (auto v: vertexSet) {
         v.second->setVisited(false);
     }
@@ -149,7 +149,7 @@ vector<RealVertex*> RealGraph::prim(int source, double &tspCost, RealGraph &mst_
 
 void RealGraph::preorderTraversal(RealVertex* v, vector<RealVertex*> &path, double &cost, int &prev_id) {
     unsigned int signal = 1;
-    RealVertex* x = this->findVertex(v->getID());
+    RealVertex* x = vertexSet[v->getID()];
     path.push_back(x);
     v->setVisited(true);
 
@@ -160,7 +160,7 @@ void RealGraph::preorderTraversal(RealVertex* v, vector<RealVertex*> &path, doub
             cost += e->getWeight();
         }
         else if (!t->isVisited()) {
-            RealVertex* s = findVertex(prev_id);
+            RealVertex* s = vertexSet[prev_id];
             cost += costCalculation(s, t);
             prev_id = t->getID();
         }
