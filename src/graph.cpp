@@ -170,8 +170,8 @@ vector<Vertex*> Graph::prim(Graph &def, int source, double &tspCost, Graph &mst_
 
             if (!v->isVisited() && w < v->getDistance()) {
                 v->setPath(e);
-                v->setDistance(w);
                 double prev_dist = v->getDistance();
+                v->setDistance(w);
                 if (prev_dist == MAX) {
                     pq.insert(v);
                 }
