@@ -11,6 +11,7 @@
 class RealVertex;
 #include "realvertexedge.h"
 #include "mpq.h"
+#include "haversine.h"
 
 using namespace std;
 

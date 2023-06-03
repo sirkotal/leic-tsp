@@ -83,6 +83,7 @@ void Menu::mainMenu(){
                         double cost = 0;
                         auto start = chrono::high_resolution_clock::now();
                         vector<RealVertex *> res = manager.realTriangularApprox(cost);
+                        //cout << res.size() << endl;
                         auto end = chrono::high_resolution_clock::now();
                         auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
                         cout << "Path: ";

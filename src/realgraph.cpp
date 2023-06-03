@@ -177,6 +177,11 @@ double RealGraph::costCalculation(RealVertex* s, RealVertex* t) {
         return 0.0;
     }
 
+    if (true) {        // areConnected(s, t)
+        double distance = haversine(s, t);
+        return distance;
+    }
+
     for (auto e: s->getAdj()) {
         if (e->getDest()->getID() == t->getID()) {
             return e->getWeight();
