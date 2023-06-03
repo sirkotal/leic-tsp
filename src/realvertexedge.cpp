@@ -99,6 +99,10 @@ void RealVertex::setDistance(int num) {
     this->dist = num;
 }
 
+bool RealVertex::operator<(RealVertex & v2) const {
+    return this->getDistance() < v2.getDistance();
+}
+
 /********************** Edge  ****************************/
 
 RealEdge::RealEdge(RealVertex *orig, RealVertex *dest, double w): orig(orig), dest(dest), weight(w) {}

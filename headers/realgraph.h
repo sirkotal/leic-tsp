@@ -4,11 +4,13 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <queue>
 #include <limits>
 #include <algorithm>
 class RealVertex;
 #include "realvertexedge.h"
+#include "mpq.h"
 
 using namespace std;
 
@@ -70,13 +72,19 @@ public:
      * @brief Gets the graph's vertexes
      * @return A vector with all of the graph's vertexes
      */
-    vector<RealVertex*> getVertexSet() const;
+    unordered_map<int, RealVertex *> getVertexSet() const;
+
+    vector<RealVertex*> prim(int source, double &tspCost, RealGraph &mst_graph);
+
+    void preorderTraversal(RealVertex* v, vector<RealVertex*> &path, double &cost, int &prev_id);
+
+    double costCalculation(RealVertex* s, RealVertex* t);
 
 private:
     /**
      * @brief A vector containing all of the graph's vertexes
      */
-    vector<RealVertex*> vertexSet;    // vertex set
+    unordered_map<int, RealVertex*> vertexSet;    // vertex set
 
     /**
      * @brief Removes a vertex from the graph
