@@ -8,7 +8,7 @@
 
 Manager::Manager() {
     this->network = new Graph();
-    this->real_network = new RealGraph();
+    this->real_network = RealGraph();
     // buildGraph(endF);
     /*buildRealGraph(realNF);
     buildRealNetwork(realEF);*/
@@ -16,7 +16,6 @@ Manager::Manager() {
 
 Manager::~Manager() {
     delete network;
-    delete real_network;
 }
 
 void Manager::buildGraph(const string& filename) {
@@ -81,7 +80,7 @@ void Manager::buildRealGraph(const string& filename) {
             double lon = stod(longitude);
             double lat = stod(latitude);
 
-            real_network->addVertex(node_id, lon, lat);
+            real_network.addVertex(node_id, lon, lat);
             count++;
         }
         thefile.close();
@@ -108,7 +107,7 @@ void Manager::buildRealNetwork(const string& filename) {
             getline(thefile, dest, ',');
             getline(thefile, dist, '\n');
 
-            if (orig.size() == 0) {
+            if (orig.empty()) {
                 continue;
             }
 
@@ -116,8 +115,11 @@ void Manager::buildRealNetwork(const string& filename) {
             int dest_id = stoi(dest);
             double distance = stod(dist);
 
-            real_network->addBidirectionalEdge(orig_id, dest_id, distance);
+            real_network.addBidirectionalEdge(orig_id, dest_id, distance);
             count++;
+           // cout << "(" << orig_id << ")" << endl;
+           // cout << "(" << dest_id << ")" << endl;
+           // cout << count << endl;
         }
         thefile.close();
     }
@@ -163,5 +165,13 @@ vector<Vertex*> Manager::triangularApproximation(double &cost) {
     Graph mst = Graph();
     vector<Vertex*> path = network->prim(src, cost, mst);
     cost += network->costCalculation((*(path.rbegin())), network->findVertex(src));
+    return path;
+}
+
+vector<RealVertex*> Manager::realTriangularApprox(double &cost) {
+    int src = 0;
+    RealGraph mst = RealGraph();
+    vector<RealVertex*> path = real_network.prim(src, cost, mst);
+    cost += real_network.costCalculation((*(path.rbegin())), real_network.findVertex(src));
     return path;
 }

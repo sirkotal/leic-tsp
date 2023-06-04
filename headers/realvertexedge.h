@@ -7,6 +7,8 @@
 #include <limits>
 #include <algorithm>
 
+#define MAX std::numeric_limits<double>::max()
+
 class RealEdge;
 
 /************************* Vertex  **************************/
@@ -68,7 +70,7 @@ public:
      * @brief Gets the vertex's distance (cost) to a source vertex
      * @return The vertex's distance to the source
      */
-    int getDistance() const;
+    double getDistance() const;
 
     /**
      * @brief Sets the vertex to either visited or unvisited
@@ -98,7 +100,7 @@ public:
      * @brief Sets the vertex's distance (cost) to a source vertex
      * @param num The vertex's distance to the source
      */
-    void setDistance(int num);
+    void setDistance(double num);
 
     /**
      * @brief Adds an edge that originates from the vertex
@@ -115,6 +117,10 @@ public:
      * @return True if the edge was successfully removed; if it doesn't exist, it returns false
      */
     bool removeEdge(int destID);
+
+    bool operator<(RealVertex & v2) const;
+
+    int queueIndex = 0;
 
 private:
     /**
@@ -159,7 +165,7 @@ private:
     /**
      * @brief The cost of reaching this vertex
      */
-    int dist = INT_MAX;
+    double dist = MAX;
 };
 
 /********************** Edge  ****************************/

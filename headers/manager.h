@@ -42,6 +42,8 @@ public:
 
     vector<Vertex*> triangularApproximation(double &cost);
 
+    vector<RealVertex*> realTriangularApprox(double &cost);
+
     // int numTest();
 
 private:
@@ -50,7 +52,7 @@ private:
      */
     Graph *network;
 
-    RealGraph *real_network;
+    RealGraph real_network;
 };
 
 #endif //LEIC_TSP_MANAGER_H
