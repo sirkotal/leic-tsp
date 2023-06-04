@@ -15,50 +15,48 @@ class Vertex;
 using namespace std;
 
 /**
- * @brief Represents the railway network
+ * @brief Represents a shipping/delivery network
  */
 class Graph {
 public:
     Graph() {};
 
     /**
-     * @brief Finds a vertex in the graph with the given id
+     * @brief Finds a vertex in the graph with the given ID
      * @details Complexity: O(|V|)
-     * @param id The vertex's id
-     * @return The vertex with the specified id; if it doesn't exist, it returns nullptr
+     * @param id The vertex's ID
+     * @return The vertex with the specified ID; if it doesn't exist, it returns nullptr
      */
     Vertex *findVertex(int id) const;
 
     /**
-     * @brief Adds a vertex representing a specific train station to the graph
-     * @param station The train station the vertex represents
+     * @brief Adds a vertex representing a specific place to the graph
+     * @param id The ID of the place the vertex represents
      * @return True if the vertex was successfully added; if the vertex already exists, it returns false
      */
     bool addVertex(int id);
 
     /**
-     * @brief Adds an edge between to vertexes of a graph
-     * @param source The id of the source vertex
-     * @param dest The id of the destination vertex
+     * @brief Adds an edge between two vertices of a graph
+     * @param source The ID of the source vertex
+     * @param dest The ID of the destination vertex
      * @param w The capacity of the edge
-     * @param serv The service provided in the edge
      * @return True if the edge was successfully added; if the source or destination vertex does not exist, it returns false
      */
     bool addEdge(int source, int dest, double w);
 
     /**
      * @brief Adds two edges: one from a source to a destination vertex and another one in the opposite direction
-     * @param source The id of the source vertex
-     * @param dest The id of the destination vertex
+     * @param source The ID of the source vertex
+     * @param dest The ID of the destination vertex
      * @param w The capacity of the edge
-     * @param serv The service provided in the edge
      * @return True if the edges were successfully added; if the source or destination vertex does not exist, it returns false
      */
     bool addBidirectionalEdge(int source, int dest, double w);
 
     /**
-     * @brief Gets the graph's number of vertexes
-     * @return The number of vertexes in the graph
+     * @brief Gets the graph's number of vertices
+     * @return The number of vertices in the graph
      */
     int getNumVertex() const;
 
@@ -69,33 +67,55 @@ public:
     int getNumEdges() const;
 
     /**
-     * @brief Gets the graph's vertexes
-     * @return A vector with all of the graph's vertexes
+     * @brief Gets the graph's vertices
+     * @return An unordered map with every pair of the graph's vertices and their respective IDs
      */
     unordered_map<int, Vertex*> getVertexSet() const;
 
     /**
      * @brief Calculates the shortest path starting at one point and ending in another while going through every node of the graph
+     * @details Complexity: O(V!)
      * @param current The current node
      * @param start The starting node
      * @param counter Counts the visited nodes
      * @param distance Distance between the nodes
      * @param min_distance Current minimum distance between the nodes
-     * @param visited Keeps track of visited nodes
      * @param min_path The minimum path
      * @param pathTSP The current path
      * @return The minimum distance between the two nodes
      */
     double bruteforceBacktrack(Vertex* current, Vertex* start, int counter, double distance, double min_distance, vector<int> &min_path, vector<int> &pathTSP);
 
+    /**
+     * @brief
+     * @details Complexity: O(-)
+     * @param source
+     * @param tspCost
+     * @param mst_graph
+     * @return
+     */
     vector<Vertex*> prim(int source, double &tspCost, Graph &mst_graph);
 
+    /**
+     * @brief
+     * @details Complexity: O(-)
+     * @param v
+     * @param path
+     * @param cost
+     * @param prev_id
+     */
     void preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost, int &prev_id);
 
+    /**
+     * @brief Calculates the cost of traveling between two vertices in the network
+     * @param s The source vertex
+     * @param t The destination vertex
+     * @return The cost of traveling between the two vertices
+     */
     double costCalculation(Vertex* s, Vertex* t);
 private:
     /**
-     * @brief A vector containing all of the graph's vertexes
+     * @brief An unordered map containing every pair of the graph's vertices and their respective IDs
      */
     unordered_map<int, Vertex*> vertexSet;    // vertex set
 

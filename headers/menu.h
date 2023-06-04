@@ -10,7 +10,7 @@
 using namespace std;
 
 /**
- * @brief Represents the railway network management system's menu
+ * @brief Represents the shipping/delivery network heuristics system's menu
  */
 class Menu {
 public:
@@ -27,26 +27,19 @@ public:
     void printMainMenu();
 
     /**
-     * @brief Builds a graph containing the railway's train stations and its connections
-     * @param r File containing the train stations' information
-     * @param n File containing the railway network's information
-     */
-    void dataBuilder(const string &f);
-
-    /**
-     * @brief Builds a graph containing the railway's train stations and its connections
-     * @param r File containing the train stations' information
-     * @param n File containing the railway network's information
-     */
-    void realDataBuilder(const string &n, const string &e);
-
-    /**
-     * @brief According to the chosen option, presents and deals with the options to choose: submenus, create a railway network or exit the program.
+     * @brief According to the chosen option, presents and deals with the options to choose: heuristics, create a shipping/delivery network or exit the program.
      */
     void mainMenu();
 
+    /**
+     * @brief Displays the "Create the Route's Graph" menu, indicating the meaning of each option
+     */
     void printBuildSubMenu();
 
+    /**
+     * @brief According to the chosen option, builds a graph for the user
+     * @param option Option chosen by the user
+     */
     void switchBuildSubMenu(char option);
 
 

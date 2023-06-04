@@ -14,7 +14,7 @@ class RealEdge;
 /************************* Vertex  **************************/
 
 /**
- * @brief Represents a station in the railway network
+ * @brief Represents a place in a real shipping/delivery network
  */
 class RealVertex {
 public:
@@ -32,8 +32,16 @@ public:
      */
     int getID() const;
 
+    /**
+     * @brief Gets the vertex's longitude value
+     * @return The vertex's longitude
+     */
     double getLongitude() const;
 
+    /**
+     * @brief Gets the vertex's latitude value
+     * @return The vertex's latitude
+     */
     double getLatitude() const;
 
     /**
@@ -120,16 +128,25 @@ public:
 
     bool operator<(RealVertex & v2) const;
 
+    /**
+     * @brief Value used for the Mutable Priority Queue class
+     */
     int queueIndex = 0;
 
 private:
     /**
-     * @brief The vertex's station
+     * @brief The vertex's ID
      */
     int id;
 
+    /**
+     * @brief The vertex's longitude
+     */
     double longitude;
 
+    /**
+     * @brief The vertex's latitude
+     */
     double latitude;
 
     /**
@@ -171,7 +188,7 @@ private:
 /********************** Edge  ****************************/
 
 /**
- * @brief Represents the path between two stations in a railway network
+ * @brief Represents the path between two places in a real shipping/delivery network
  */
 class RealEdge {
 public:
@@ -241,7 +258,7 @@ private:
     RealEdge *reverse = nullptr;
 
     /**
-     * @brief The number of trains that are simultaneously in the edge
+     * @brief The edge's flow
      */
     double flow; // for flow-related problems
 };
