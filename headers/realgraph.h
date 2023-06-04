@@ -76,22 +76,22 @@ public:
     unordered_map<int, RealVertex *> getVertexSet() const;
 
     /**
-     * @brief
-     * @details Complexity: O(-)
-     * @param source
-     * @param tspCost
-     * @param mst_graph
-     * @return
+     * @brief Finds the Minimum Spanning Tree (MST) of a real graph
+     * @details Complexity: O(E log V)
+     * @param source The ID of the source vertex
+     * @param tspCost The cost of going through the path
+     * @param mst_graph The graph that represents the Minimum Spanning Tree (MST)
+     * @return A vector containing the shortest path
      */
     vector<RealVertex*> prim(int source, double &tspCost, RealGraph &mst_graph);
 
     /**
-     * @brief
-     * @details Complexity: O(-)
-     * @param v
-     * @param path
-     * @param cost
-     * @param prev_id
+     * @brief Visits all the vertices in the graph using a preorder traversal
+     * @details Complexity: O(V+E)
+     * @param v The current vertex
+     * @param path The vector to store the shortest path
+     * @param cost The cost of going through the path
+     * @param prev_id The ID of the previous vertex
      */
     void preorderTraversal(RealVertex* v, vector<RealVertex*> &path, double &cost, int &prev_id);
 
