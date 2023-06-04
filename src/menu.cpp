@@ -202,8 +202,8 @@ void Menu::switchBuildSubMenu(char option) {
             cout << endl;*/
             is_real = true;
             real_chosen = true;
-            nodes =  "../data/Real-World-Graphs/graph2/nodes.csv";
-            edges =  "../data/Real-World-Graphs/graph2/edges.csv";
+            nodes =  "../data/Real-World-Graphs/graph1/nodes.csv";
+            edges =  "../data/Real-World-Graphs/graph1/edges.csv";
             manager.buildRealGraph(nodes);
             manager.buildRealNetwork(edges);
             break;

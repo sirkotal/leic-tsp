@@ -161,7 +161,14 @@ void RealGraph::preorderTraversal(RealVertex* v, vector<RealVertex*> &path, doub
         }
         else if (!t->isVisited()) {
             RealVertex* s = vertexSet[prev_id];
-            cost += costCalculation(s, t);
+            double edge_cost = costCalculation(s, t);
+            if (edge_cost == 0) {
+                double hcost = haversine(s, t);
+                cost += hcost;
+            }
+            else {
+                cost += edge_cost;
+            }
             prev_id = t->getID();
         }
         signal = 0;
@@ -175,11 +182,6 @@ void RealGraph::preorderTraversal(RealVertex* v, vector<RealVertex*> &path, doub
 double RealGraph::costCalculation(RealVertex* s, RealVertex* t) {
     if (s == nullptr) {
         return 0.0;
-    }
-
-    if (true) {        // areConnected(s, t)
-        double distance = haversine(s, t);
-        return distance;
     }
 
     for (auto e: s->getAdj()) {
