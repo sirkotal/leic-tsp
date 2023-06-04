@@ -25,9 +25,9 @@ void Menu::printMainMenu() {
                  "|                                                                                                     |\n"
                  "| 1 - Backtracking                                                                                    |\n"
                  "| 2 - Triangular Approximation                                                                        |\n"
-                 "| 3 - Reliability and Sensitivity to Line Failures                                                    |\n"
+                 "| 3 - Custom Heuristic                                                                                |\n"
                  "|                                                                                                     |\n"
-                 "| R - Create the Route's Graph                                                                          |\n"
+                 "| R - Create the Route's Graph                                                                        |\n"
                  "| T - Toggle Execution Time Display                                                                   |\n"
                  "|                                                                                                     |\n"
                  "| 0 - Exit Program                                                                                    |\n"
@@ -68,13 +68,10 @@ void Menu::mainMenu(){
                     break;
                 }
                 case '2': {
-                    /*string path = "../data/Toy-Graphs/shipping.csv";
-                    manager.buildGraph(path);*/
                     if (real_chosen) {
                         double cost = 0;
                         auto start = chrono::high_resolution_clock::now();
                         vector<RealVertex *> res = manager.realTriangularApprox(cost);
-                        //cout << res.size() << endl;
                         auto end = chrono::high_resolution_clock::now();
                         auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
                         cout << "Path: ";
@@ -155,6 +152,7 @@ void Menu::printBuildSubMenu() {
 
 void Menu::switchBuildSubMenu(char option) {
     string nodes, edges;
+    string graph_num;
     string path = "../data/";
     switch (option) {
         case '1':
@@ -166,7 +164,6 @@ void Menu::switchBuildSubMenu(char option) {
             std::cin.ignore(); //clear the buffer
             cout << endl;
             manager.buildGraph(edges);
-            //manager.testing();
             break;
         case '2':
             is_real = true;
@@ -193,8 +190,26 @@ void Menu::switchBuildSubMenu(char option) {
             cout << endl;*/
             is_real = true;
             real_chosen = true;
-            nodes =  "../data/Real-World-Graphs/graph2/nodes.csv";
-            edges =  "../data/Real-World-Graphs/graph2/edges.csv";
+            cout << "Insert the number of the graph you wish to build: ";
+            cin >> graph_num;
+            if (graph_num == "1") {
+                nodes =  "../data/Real-World-Graphs/graph1/nodes.csv";
+                edges =  "../data/Real-World-Graphs/graph1/edges.csv";
+            }
+            else if (graph_num == "2") {
+                nodes =  "../data/Real-World-Graphs/graph2/nodes.csv";
+                edges =  "../data/Real-World-Graphs/graph2/edges.csv";
+            }
+            else if (graph_num == "3") {
+                nodes =  "../data/Real-World-Graphs/graph3/nodes.csv";
+                edges =  "../data/Real-World-Graphs/graph3/edges.csv";
+            }
+            else {
+                cout << "That option is invalid! Returning to the Main Menu." << endl;
+                break;
+            }
+            std::cin.ignore(); //clear the buffer
+            cout << endl;
             manager.buildRealGraph(nodes);
             manager.buildRealNetwork(edges);
             break;

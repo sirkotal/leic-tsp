@@ -82,7 +82,6 @@ void Manager::buildRealGraph(const string& filename) {
     {
         cout << "Error: The program was unable to open the file.";
     }
-    cout << count << endl;
 }
 
 void Manager::buildRealNetwork(const string& filename) {
@@ -117,7 +116,6 @@ void Manager::buildRealNetwork(const string& filename) {
     {
         cout << "Error: The program was unable to open the file.";
     }
-    cout << count << endl;
 }
 
 void Manager::testing() {
