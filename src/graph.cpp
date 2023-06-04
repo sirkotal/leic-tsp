@@ -194,17 +194,12 @@ vector<Vertex*> Graph::prim(int source, double &tspCost, Graph &mst_graph) {
     int id;
     preorderTraversal(mst_src, path, tspCost, id);
 
-    /*for (auto element: mst_graph.vertexSet) {
-        cout << element->getID() << endl;
-    }*/
-
     return path;
 }
 
 void Graph::preorderTraversal(Vertex* v, vector<Vertex*> &path, double &cost, int &prev_id) {
     unsigned int signal = 1;
     Vertex* x = this->findVertex(v->getID());
-    // cout << "(" << x->getID() << ")" << endl;
     path.push_back(x);
     v->setVisited(true);
 

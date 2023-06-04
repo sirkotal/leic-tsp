@@ -9,9 +9,6 @@
 Manager::Manager() {
     this->network = new Graph();
     this->real_network = RealGraph();
-    // buildGraph(endF);
-    /*buildRealGraph(realNF);
-    buildRealNetwork(realEF);*/
 }
 
 Manager::~Manager() {
@@ -36,8 +33,6 @@ void Manager::buildGraph(const string& filename) {
             if (orig.size() == 0) {
                 continue;
             }
-
-            //cout << orig << "||" << dest << "||" << dist << endl;
 
             int orig_id = stoi(orig);
             int dest_id = stoi(dest);
@@ -73,8 +68,6 @@ void Manager::buildRealGraph(const string& filename) {
             if (node.size() == 0) {
                 continue;
             }
-
-            //cout << orig << "||" << dest << "||" << dist << endl;
 
             int node_id = stoi(node);
             double lon = stod(longitude);
@@ -117,9 +110,6 @@ void Manager::buildRealNetwork(const string& filename) {
 
             real_network.addBidirectionalEdge(orig_id, dest_id, distance);
             count++;
-           // cout << "(" << orig_id << ")" << endl;
-           // cout << "(" << dest_id << ")" << endl;
-           // cout << count << endl;
         }
         thefile.close();
     }
