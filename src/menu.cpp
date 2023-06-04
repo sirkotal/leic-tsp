@@ -176,18 +176,6 @@ void Menu::switchBuildSubMenu(char option) {
             manager.buildGraph(edges);
             break;
         case '3':
-            /*path = path + "Real-World-Graphs/";
-            cout << "Insert your routing's nodes file: ";
-            cin >> nodes;
-            edges = path + nodes;
-            std::cin.ignore(); //clear the buffer
-            cout << endl;
-
-            cout << "Insert your routing's edges file: ";
-            cin >> edges;
-            edges = path + edges;
-            std::cin.ignore(); //clear the buffer
-            cout << endl;*/
             is_real = true;
             real_chosen = true;
             cout << "Insert the number of the graph you wish to build: ";
