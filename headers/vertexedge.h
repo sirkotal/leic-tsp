@@ -14,7 +14,7 @@ class Edge;
 /************************* Vertex  **************************/
 
 /**
- * @brief Represents a station in the railway network
+ * @brief Represents a place in a shipping/delivery network
  */
 class Vertex {
 public:
@@ -27,8 +27,8 @@ public:
     std::vector<Edge *> getAdj() const;
 
     /**
-     * @brief Gets the train station associated to the vertex
-     * @return The vertex's station
+     * @brief Gets the ID of the vertex
+     * @return The vertex's ID
      */
     int getID() const;
 
@@ -128,14 +128,20 @@ public:
 
     bool operator<(Vertex & v2) const;
 
+    /**
+     * @brief Value used for the Mutable Priority Queue class
+     */
     int queueIndex = 0;
 
 private:
     /**
-     * @brief The vertex's station
+     * @brief The vertex's ID
      */
     int id;
 
+    /**
+     * @brief The vertex's label
+     */
     std::string label = "";
 
     /**
@@ -182,7 +188,7 @@ private:
 /********************** Edge  ****************************/
 
 /**
- * @brief Represents the path between two stations in a railway network
+ * @brief Represents the path between two places in a shipping/delivery network
  */
 class Edge {
 public:
@@ -252,7 +258,7 @@ private:
     Edge *reverse = nullptr;
 
     /**
-     * @brief The number of trains that are simultaneously in the edge
+     * @brief The edge's flow
      */
     double flow; // for flow-related problems
 };

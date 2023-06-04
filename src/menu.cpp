@@ -27,22 +27,12 @@ void Menu::printMainMenu() {
                  "| 2 - Triangular Approximation                                                                        |\n"
                  "| 3 - Reliability and Sensitivity to Line Failures                                                    |\n"
                  "|                                                                                                     |\n"
-                 "| R - Create the Route Graph                                                                          |\n"
+                 "| R - Create the Route's Graph                                                                          |\n"
                  "| T - Toggle Execution Time Display                                                                   |\n"
                  "|                                                                                                     |\n"
                  "| 0 - Exit Program                                                                                    |\n"
                  "-------------------------------------------------------------------------------------------------------\n"
                  "> ";
-}
-
-
-void Menu::dataBuilder(const string &f) {
-    manager.buildGraph(f);
-}
-
-void Menu::realDataBuilder(const string &n, const string &e) {
-    manager.buildRealGraph(n);
-    manager.buildRealNetwork(e);
 }
 
 void Menu::mainMenu(){
@@ -203,8 +193,8 @@ void Menu::switchBuildSubMenu(char option) {
             cout << endl;*/
             is_real = true;
             real_chosen = true;
-            nodes =  "../data/Real-World-Graphs/graph1/nodes.csv";
-            edges =  "../data/Real-World-Graphs/graph1/edges.csv";
+            nodes =  "../data/Real-World-Graphs/graph2/nodes.csv";
+            edges =  "../data/Real-World-Graphs/graph2/edges.csv";
             manager.buildRealGraph(nodes);
             manager.buildRealNetwork(edges);
             break;
