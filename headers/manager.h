@@ -60,6 +60,11 @@ public:
      */
     vector<RealVertex*> realTriangularApprox(double &cost);
 
+    /**
+     * Calculates the shortest path starting at one point and ending in another using an heuristic based on a greedy approach and on 2-opt optimization.
+     * @param min_path The minimum path.
+     * @return The cost of going through the shortest path between the two points
+     */
     double myHeuristic(vector<int> &min_path);
     // int numTest();
 
