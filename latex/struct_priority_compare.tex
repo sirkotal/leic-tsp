@@ -1,0 +1,43 @@
+\doxysection{Priority\+Compare Struct Reference}
+\hypertarget{struct_priority_compare}{}\label{struct_priority_compare}\index{PriorityCompare@{PriorityCompare}}
+
+
+Allows the sorting of the graph\textquotesingle{}s vertexes by descending order of distance.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_priority_compare_a2fdadd3399926d379095fb9c4b68b5c1}{operator()}} (const \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}s, const \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}t)
+\begin{DoxyCompactList}\small\item\em Sorts two vertexes by distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Allows the sorting of the graph\textquotesingle{}s vertexes by descending order of distance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_priority_compare_a2fdadd3399926d379095fb9c4b68b5c1}\label{struct_priority_compare_a2fdadd3399926d379095fb9c4b68b5c1} 
+\index{PriorityCompare@{PriorityCompare}!operator()@{operator()}}
+\index{operator()@{operator()}!PriorityCompare@{PriorityCompare}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily bool Priority\+Compare\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{s,  }\item[{const \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sorts two vertexes by distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The first vertex \\
+\hline
+{\em t} & The second vertex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the first vertex\textquotesingle{}s distance is bigger than the second\textquotesingle{}s; otherwise, it returns false 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/graph.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,138 @@
+\doxysection{Edge Class Reference}
+\hypertarget{class_edge}{}\label{class_edge}\index{Edge@{Edge}}
+
+
+Represents the path between two places in a shipping/delivery network.  
+
+
+
+
+{\ttfamily \#include $<$vertexedge.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_edge_addd388ca7a2bd9134b471b6795060083}\label{class_edge_addd388ca7a2bd9134b471b6795060083} 
+{\bfseries Edge} (\mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}orig, \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}dest, double w)
+\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_edge_a5cda44e9ba257b03963a1ac301371a59}{get\+Dest}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination vertex. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_edge_a1caaffca117bab3ff5b7387623a356f8}{get\+Weight}} () const
+\begin{DoxyCompactList}\small\item\em Gets the edge\textquotesingle{}s weight/capacity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_edge_a6e8b08e91c0694b40edff0432fb612eb}{get\+Orig}} () const
+\begin{DoxyCompactList}\small\item\em Gets the origin vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_edge_a756d2d246aa5445d0f396626c7d4fd56}{get\+Reverse}} () const
+\begin{DoxyCompactList}\small\item\em Gets the reverse edge. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_edge_a30ff9f3127097db8dce20f5e8b15e6dc}{get\+Flow}} () const
+\begin{DoxyCompactList}\small\item\em Gets the edge\textquotesingle{}s flow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_a64881280015bd83702fe3b2c6234b7e5}{set\+Reverse}} (\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*}reverse)
+\begin{DoxyCompactList}\small\item\em Sets the reverse edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_a788cfe1f98772af4e7bbfe6310d0ccaa}{set\+Flow}} (double flow)
+\begin{DoxyCompactList}\small\item\em Sets the edge\textquotesingle{}s flow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the path between two places in a shipping/delivery network. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_edge_a5cda44e9ba257b03963a1ac301371a59}\label{class_edge_a5cda44e9ba257b03963a1ac301371a59} 
+\index{Edge@{Edge}!getDest@{getDest}}
+\index{getDest@{getDest}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} Edge\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the destination vertex. 
+
+\begin{DoxyReturn}{Returns}
+The destination vertex 
+\end{DoxyReturn}
+\Hypertarget{class_edge_a30ff9f3127097db8dce20f5e8b15e6dc}\label{class_edge_a30ff9f3127097db8dce20f5e8b15e6dc} 
+\index{Edge@{Edge}!getFlow@{getFlow}}
+\index{getFlow@{getFlow}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getFlow()}{getFlow()}}
+{\footnotesize\ttfamily double Edge\+::get\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the edge\textquotesingle{}s flow. 
+
+\begin{DoxyReturn}{Returns}
+The edge\textquotesingle{}s flow 
+\end{DoxyReturn}
+\Hypertarget{class_edge_a6e8b08e91c0694b40edff0432fb612eb}\label{class_edge_a6e8b08e91c0694b40edff0432fb612eb} 
+\index{Edge@{Edge}!getOrig@{getOrig}}
+\index{getOrig@{getOrig}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getOrig()}{getOrig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} Edge\+::get\+Orig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the origin vertex. 
+
+\begin{DoxyReturn}{Returns}
+The origin vertex 
+\end{DoxyReturn}
+\Hypertarget{class_edge_a756d2d246aa5445d0f396626c7d4fd56}\label{class_edge_a756d2d246aa5445d0f396626c7d4fd56} 
+\index{Edge@{Edge}!getReverse@{getReverse}}
+\index{getReverse@{getReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getReverse()}{getReverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} Edge\+::get\+Reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the reverse edge. 
+
+\begin{DoxyReturn}{Returns}
+The reverse edge 
+\end{DoxyReturn}
+\Hypertarget{class_edge_a1caaffca117bab3ff5b7387623a356f8}\label{class_edge_a1caaffca117bab3ff5b7387623a356f8} 
+\index{Edge@{Edge}!getWeight@{getWeight}}
+\index{getWeight@{getWeight}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getWeight()}{getWeight()}}
+{\footnotesize\ttfamily double Edge\+::get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the edge\textquotesingle{}s weight/capacity. 
+
+\begin{DoxyReturn}{Returns}
+The edge\textquotesingle{}s weight 
+\end{DoxyReturn}
+\Hypertarget{class_edge_a788cfe1f98772af4e7bbfe6310d0ccaa}\label{class_edge_a788cfe1f98772af4e7bbfe6310d0ccaa} 
+\index{Edge@{Edge}!setFlow@{setFlow}}
+\index{setFlow@{setFlow}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setFlow()}{setFlow()}}
+{\footnotesize\ttfamily void Edge\+::set\+Flow (\begin{DoxyParamCaption}\item[{double}]{flow }\end{DoxyParamCaption})}
+
+
+
+Sets the edge\textquotesingle{}s flow. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flow} & The edge\textquotesingle{}s flow \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_edge_a64881280015bd83702fe3b2c6234b7e5}\label{class_edge_a64881280015bd83702fe3b2c6234b7e5} 
+\index{Edge@{Edge}!setReverse@{setReverse}}
+\index{setReverse@{setReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setReverse()}{setReverse()}}
+{\footnotesize\ttfamily void Edge\+::set\+Reverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*}}]{reverse }\end{DoxyParamCaption})}
+
+
+
+Sets the reverse edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reverse} & The reverse edge \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/vertexedge.\+h\item 
+src/vertexedge.\+cpp\end{DoxyCompactItemize}

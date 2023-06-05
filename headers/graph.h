@@ -115,8 +115,7 @@ public:
     double costCalculation(Vertex* s, Vertex* t);
 
     /**
-     * Calculates the heuristic value for the TSP problem using a greedy approach and 2-opt optimization.
-     *
+     * @brief Calculates the heuristic value for the TSP problem using a greedy approach and 2-opt optimization.
      * @param current The current vertex being considered.
      * @param start The starting vertex of the TSP path.
      * @param dist The current total distance of the TSP path.

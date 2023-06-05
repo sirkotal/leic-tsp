@@ -1,0 +1,138 @@
+\doxysection{Real\+Edge Class Reference}
+\hypertarget{class_real_edge}{}\label{class_real_edge}\index{RealEdge@{RealEdge}}
+
+
+Represents the path between two places in a real shipping/delivery network.  
+
+
+
+
+{\ttfamily \#include $<$realvertexedge.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_real_edge_a08d0895b427fd5e1253902973e9372a6}\label{class_real_edge_a08d0895b427fd5e1253902973e9372a6} 
+{\bfseries Real\+Edge} (\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}orig, \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}dest, double w)
+\item 
+\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_real_edge_abffb9211d157b16a498f29514ab99fed}{get\+Dest}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination vertex. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_real_edge_ab3eca88c305d43a6702b2fd2de512109}{get\+Weight}} () const
+\begin{DoxyCompactList}\small\item\em Gets the edge\textquotesingle{}s weight/capacity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_real_edge_af848b7c70f0473c5bf0a58f6d0cbd923}{get\+Orig}} () const
+\begin{DoxyCompactList}\small\item\em Gets the origin vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_real_edge_ada8f741c7966e15b2df3ceeb4955c7de}{get\+Reverse}} () const
+\begin{DoxyCompactList}\small\item\em Gets the reverse edge. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_real_edge_af4cba9cff1c0d3a51331c641214b710d}{get\+Flow}} () const
+\begin{DoxyCompactList}\small\item\em Gets the edge\textquotesingle{}s flow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_edge_afdf15b6e95cbbceed7f736f94c251189}{set\+Reverse}} (\mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*}reverse)
+\begin{DoxyCompactList}\small\item\em Sets the reverse edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_edge_a97a420d93ebec58247b49834fa508972}{set\+Flow}} (double flow)
+\begin{DoxyCompactList}\small\item\em Sets the edge\textquotesingle{}s flow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the path between two places in a real shipping/delivery network. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_real_edge_abffb9211d157b16a498f29514ab99fed}\label{class_real_edge_abffb9211d157b16a498f29514ab99fed} 
+\index{RealEdge@{RealEdge}!getDest@{getDest}}
+\index{getDest@{getDest}!RealEdge@{RealEdge}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} Real\+Edge\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the destination vertex. 
+
+\begin{DoxyReturn}{Returns}
+The destination vertex 
+\end{DoxyReturn}
+\Hypertarget{class_real_edge_af4cba9cff1c0d3a51331c641214b710d}\label{class_real_edge_af4cba9cff1c0d3a51331c641214b710d} 
+\index{RealEdge@{RealEdge}!getFlow@{getFlow}}
+\index{getFlow@{getFlow}!RealEdge@{RealEdge}}
+\doxysubsubsection{\texorpdfstring{getFlow()}{getFlow()}}
+{\footnotesize\ttfamily double Real\+Edge\+::get\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the edge\textquotesingle{}s flow. 
+
+\begin{DoxyReturn}{Returns}
+The edge\textquotesingle{}s flow 
+\end{DoxyReturn}
+\Hypertarget{class_real_edge_af848b7c70f0473c5bf0a58f6d0cbd923}\label{class_real_edge_af848b7c70f0473c5bf0a58f6d0cbd923} 
+\index{RealEdge@{RealEdge}!getOrig@{getOrig}}
+\index{getOrig@{getOrig}!RealEdge@{RealEdge}}
+\doxysubsubsection{\texorpdfstring{getOrig()}{getOrig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} Real\+Edge\+::get\+Orig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the origin vertex. 
+
+\begin{DoxyReturn}{Returns}
+The origin vertex 
+\end{DoxyReturn}
+\Hypertarget{class_real_edge_ada8f741c7966e15b2df3ceeb4955c7de}\label{class_real_edge_ada8f741c7966e15b2df3ceeb4955c7de} 
+\index{RealEdge@{RealEdge}!getReverse@{getReverse}}
+\index{getReverse@{getReverse}!RealEdge@{RealEdge}}
+\doxysubsubsection{\texorpdfstring{getReverse()}{getReverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} Real\+Edge\+::get\+Reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the reverse edge. 
+
+\begin{DoxyReturn}{Returns}
+The reverse edge 
+\end{DoxyReturn}
+\Hypertarget{class_real_edge_ab3eca88c305d43a6702b2fd2de512109}\label{class_real_edge_ab3eca88c305d43a6702b2fd2de512109} 
+\index{RealEdge@{RealEdge}!getWeight@{getWeight}}
+\index{getWeight@{getWeight}!RealEdge@{RealEdge}}
+\doxysubsubsection{\texorpdfstring{getWeight()}{getWeight()}}
+{\footnotesize\ttfamily double Real\+Edge\+::get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the edge\textquotesingle{}s weight/capacity. 
+
+\begin{DoxyReturn}{Returns}
+The edge\textquotesingle{}s weight 
+\end{DoxyReturn}
+\Hypertarget{class_real_edge_a97a420d93ebec58247b49834fa508972}\label{class_real_edge_a97a420d93ebec58247b49834fa508972} 
+\index{RealEdge@{RealEdge}!setFlow@{setFlow}}
+\index{setFlow@{setFlow}!RealEdge@{RealEdge}}
+\doxysubsubsection{\texorpdfstring{setFlow()}{setFlow()}}
+{\footnotesize\ttfamily void Real\+Edge\+::set\+Flow (\begin{DoxyParamCaption}\item[{double}]{flow }\end{DoxyParamCaption})}
+
+
+
+Sets the edge\textquotesingle{}s flow. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flow} & The edge\textquotesingle{}s flow \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_real_edge_afdf15b6e95cbbceed7f736f94c251189}\label{class_real_edge_afdf15b6e95cbbceed7f736f94c251189} 
+\index{RealEdge@{RealEdge}!setReverse@{setReverse}}
+\index{setReverse@{setReverse}!RealEdge@{RealEdge}}
+\doxysubsubsection{\texorpdfstring{setReverse()}{setReverse()}}
+{\footnotesize\ttfamily void Real\+Edge\+::set\+Reverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*}}]{reverse }\end{DoxyParamCaption})}
+
+
+
+Sets the reverse edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reverse} & The reverse edge \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/realvertexedge.\+h\item 
+src/realvertexedge.\+cpp\end{DoxyCompactItemize}

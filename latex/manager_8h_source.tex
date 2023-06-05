@@ -1,0 +1,48 @@
+\doxysection{manager.\+h}
+\hypertarget{manager_8h_source}{}\label{manager_8h_source}\index{headers/manager.h@{headers/manager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LEIC\_TSP\_MANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LEIC\_TSP\_MANAGER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <bits/stdc++.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}graph.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}realgraph.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_manager}{Manager}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_manager}{Manager}}();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_manager}{\string~Manager}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_a5171cf141e48684db0a0ee9e6b05f37a}{buildGraph}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&filename);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_a9d356f6d5bffca1c5a2a388c42048100}{buildRealGraph}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&filename);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_a6454cd59bf3afdfab092383faaf961db}{buildRealNetwork}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&filename);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_a3ce44a229c819433a1b88323f4654730}{testing}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_manager_a02f43918f3ab4f82ffa248a5e4b075c4}{backtrack}}(vector<int>\ \&min\_path);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \ \ \ \ vector<Vertex*>\ \mbox{\hyperlink{class_manager_a8069886b664057cfd882a7317caadb64}{triangularApproximation}}(\textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ vector<RealVertex*>\ \mbox{\hyperlink{class_manager_a69ca80ebabbd1514380c7bbccfecb8f1}{realTriangularApprox}}(\textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_manager_a2c163573bc1dd94a3d17c765b9a48073}{myHeuristic}}(vector<int>\ \&min\_path);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ int\ numTest();}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_graph}{Graph}}\ *network;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{class_real_graph}{RealGraph}}\ real\_network;}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LEIC\_TSP\_MANAGER\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,232 @@
+\doxysection{Real\+Graph Class Reference}
+\hypertarget{class_real_graph}{}\label{class_real_graph}\index{RealGraph@{RealGraph}}
+
+
+Represents a real shipping/delivery network.  
+
+
+
+
+{\ttfamily \#include $<$realgraph.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_real_graph_abb7463e9359881af0443a03b9ebd1f04}{find\+Vertex}} (int id) const
+\begin{DoxyCompactList}\small\item\em Finds a vertex in the graph with the given ID. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_real_graph_a47e98bf52b59941175254f3eef7b8d93}{add\+Vertex}} (int id, double lon, double lat)
+\begin{DoxyCompactList}\small\item\em Adds a vertex representing a specific place to the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_real_graph_a303a77d082b591480702ecb28462a71e}{add\+Edge}} (int source, int dest, double w)
+\begin{DoxyCompactList}\small\item\em Adds an edge between two vertices of a graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_real_graph_a4c5db77f20588e66016b186509989d8b}{add\+Bidirectional\+Edge}} (int source, int dest, double w)
+\begin{DoxyCompactList}\small\item\em Adds two edges\+: one from a source to a destination vertex and another one in the opposite direction. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_real_graph_acada4dfdf10656ce87cd2a3c900a495b}{get\+Num\+Vertex}} () const
+\begin{DoxyCompactList}\small\item\em Gets the graph\textquotesingle{}s number of vertices. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_real_graph_aacaa95cecf65db9ed84038d11621bbf1}{get\+Num\+Edges}} () const
+\begin{DoxyCompactList}\small\item\em Gets the graph\textquotesingle{}s number of edges. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_real_graph_a12f34b94e20350b43fb0c12c0633f111}{get\+Vertex\+Set}} () const
+\begin{DoxyCompactList}\small\item\em Gets the graph\textquotesingle{}s vertices. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_real_graph_a43a7a4dfeebe0eebb4b08fdc6e1ff9d5}{prim}} (int source, double \&tsp\+Cost, \mbox{\hyperlink{class_real_graph}{Real\+Graph}} \&mst\+\_\+graph)
+\begin{DoxyCompactList}\small\item\em Finds the Minimum Spanning Tree (MST) of a real graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_graph_a887565fdb72fc1548dc7b5c0298141ec}{preorder\+Traversal}} (\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}v, vector$<$ \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&path, double \&cost, int \&prev\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Visits all the vertices in the graph using a preorder traversal. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_real_graph_a969a026216142cfb4b31d2205ddc2c38}{cost\+Calculation}} (\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}s, \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}t)
+\begin{DoxyCompactList}\small\item\em Calculates the cost of traveling between two vertices in the network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a real shipping/delivery network. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_real_graph_a4c5db77f20588e66016b186509989d8b}\label{class_real_graph_a4c5db77f20588e66016b186509989d8b} 
+\index{RealGraph@{RealGraph}!addBidirectionalEdge@{addBidirectionalEdge}}
+\index{addBidirectionalEdge@{addBidirectionalEdge}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{addBidirectionalEdge()}{addBidirectionalEdge()}}
+{\footnotesize\ttfamily bool Real\+Graph\+::add\+Bidirectional\+Edge (\begin{DoxyParamCaption}\item[{int}]{source,  }\item[{int}]{dest,  }\item[{double}]{w }\end{DoxyParamCaption})}
+
+
+
+Adds two edges\+: one from a source to a destination vertex and another one in the opposite direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The ID of the source vertex \\
+\hline
+{\em dest} & The ID of the destination vertex \\
+\hline
+{\em w} & The capacity of the edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edges were successfully added; if the source or destination vertex does not exist, it returns false 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_a303a77d082b591480702ecb28462a71e}\label{class_real_graph_a303a77d082b591480702ecb28462a71e} 
+\index{RealGraph@{RealGraph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily bool Real\+Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{int}]{source,  }\item[{int}]{dest,  }\item[{double}]{w }\end{DoxyParamCaption})}
+
+
+
+Adds an edge between two vertices of a graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The ID of the source vertex \\
+\hline
+{\em dest} & The ID of the destination vertex \\
+\hline
+{\em w} & The capacity of the edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge was successfully added; if the source or destination vertex does not exist, it returns false 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_a47e98bf52b59941175254f3eef7b8d93}\label{class_real_graph_a47e98bf52b59941175254f3eef7b8d93} 
+\index{RealGraph@{RealGraph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
+{\footnotesize\ttfamily bool Real\+Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{double}]{lon,  }\item[{double}]{lat }\end{DoxyParamCaption})}
+
+
+
+Adds a vertex representing a specific place to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the place the vertex represents \\
+\hline
+{\em lon} & The place\textquotesingle{}s longitude \\
+\hline
+{\em lat} & The place\textquotesingle{}s latitude \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the vertex was successfully added; if the vertex already exists, it returns false 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_a969a026216142cfb4b31d2205ddc2c38}\label{class_real_graph_a969a026216142cfb4b31d2205ddc2c38} 
+\index{RealGraph@{RealGraph}!costCalculation@{costCalculation}}
+\index{costCalculation@{costCalculation}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{costCalculation()}{costCalculation()}}
+{\footnotesize\ttfamily double Real\+Graph\+::cost\+Calculation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}}]{s,  }\item[{\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}}]{t }\end{DoxyParamCaption})}
+
+
+
+Calculates the cost of traveling between two vertices in the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The source vertex \\
+\hline
+{\em t} & The destination vertex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cost of traveling between the two vertices 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_abb7463e9359881af0443a03b9ebd1f04}\label{class_real_graph_abb7463e9359881af0443a03b9ebd1f04} 
+\index{RealGraph@{RealGraph}!findVertex@{findVertex}}
+\index{findVertex@{findVertex}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{findVertex()}{findVertex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} Real\+Graph\+::find\+Vertex (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption}) const}
+
+
+
+Finds a vertex in the graph with the given ID. 
+
+Complexity\+: O(\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|}) 
+\begin{DoxyParams}{Parameters}
+{\em id} & The vertex\textquotesingle{}s ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The vertex with the specified ID; if it doesn\textquotesingle{}t exist, it returns nullptr 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_aacaa95cecf65db9ed84038d11621bbf1}\label{class_real_graph_aacaa95cecf65db9ed84038d11621bbf1} 
+\index{RealGraph@{RealGraph}!getNumEdges@{getNumEdges}}
+\index{getNumEdges@{getNumEdges}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{getNumEdges()}{getNumEdges()}}
+{\footnotesize\ttfamily int Real\+Graph\+::get\+Num\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the graph\textquotesingle{}s number of edges. 
+
+\begin{DoxyReturn}{Returns}
+The number of edges in the graph 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_acada4dfdf10656ce87cd2a3c900a495b}\label{class_real_graph_acada4dfdf10656ce87cd2a3c900a495b} 
+\index{RealGraph@{RealGraph}!getNumVertex@{getNumVertex}}
+\index{getNumVertex@{getNumVertex}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{getNumVertex()}{getNumVertex()}}
+{\footnotesize\ttfamily int Real\+Graph\+::get\+Num\+Vertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the graph\textquotesingle{}s number of vertices. 
+
+\begin{DoxyReturn}{Returns}
+The number of vertices in the graph 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_a12f34b94e20350b43fb0c12c0633f111}\label{class_real_graph_a12f34b94e20350b43fb0c12c0633f111} 
+\index{RealGraph@{RealGraph}!getVertexSet@{getVertexSet}}
+\index{getVertexSet@{getVertexSet}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{getVertexSet()}{getVertexSet()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ Real\+Graph\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the graph\textquotesingle{}s vertices. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map with every pair of the graph\textquotesingle{}s vertices and their respective IDs 
+\end{DoxyReturn}
+\Hypertarget{class_real_graph_a887565fdb72fc1548dc7b5c0298141ec}\label{class_real_graph_a887565fdb72fc1548dc7b5c0298141ec} 
+\index{RealGraph@{RealGraph}!preorderTraversal@{preorderTraversal}}
+\index{preorderTraversal@{preorderTraversal}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{preorderTraversal()}{preorderTraversal()}}
+{\footnotesize\ttfamily void Real\+Graph\+::preorder\+Traversal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}}]{v,  }\item[{vector$<$ \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&}]{path,  }\item[{double \&}]{cost,  }\item[{int \&}]{prev\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Visits all the vertices in the graph using a preorder traversal. 
+
+Complexity\+: O(V+E) 
+\begin{DoxyParams}{Parameters}
+{\em v} & The current vertex \\
+\hline
+{\em path} & The vector to store the shortest path \\
+\hline
+{\em cost} & The cost of going through the path \\
+\hline
+{\em prev\+\_\+id} & The ID of the previous vertex \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_real_graph_a43a7a4dfeebe0eebb4b08fdc6e1ff9d5}\label{class_real_graph_a43a7a4dfeebe0eebb4b08fdc6e1ff9d5} 
+\index{RealGraph@{RealGraph}!prim@{prim}}
+\index{prim@{prim}!RealGraph@{RealGraph}}
+\doxysubsubsection{\texorpdfstring{prim()}{prim()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ Real\+Graph\+::prim (\begin{DoxyParamCaption}\item[{int}]{source,  }\item[{double \&}]{tsp\+Cost,  }\item[{\mbox{\hyperlink{class_real_graph}{Real\+Graph}} \&}]{mst\+\_\+graph }\end{DoxyParamCaption})}
+
+
+
+Finds the Minimum Spanning Tree (MST) of a real graph. 
+
+Complexity\+: O(\+E log V) 
+\begin{DoxyParams}{Parameters}
+{\em source} & The ID of the source vertex \\
+\hline
+{\em tsp\+Cost} & The cost of going through the path \\
+\hline
+{\em mst\+\_\+graph} & The graph that represents the Minimum Spanning Tree (MST) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the shortest path 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/realgraph.\+h\item 
+src/realgraph.\+cpp\end{DoxyCompactItemize}

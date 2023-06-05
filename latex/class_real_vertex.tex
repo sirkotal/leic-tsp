@@ -1,0 +1,317 @@
+\doxysection{Real\+Vertex Class Reference}
+\hypertarget{class_real_vertex}{}\label{class_real_vertex}\index{RealVertex@{RealVertex}}
+
+
+Represents a place in a real shipping/delivery network.  
+
+
+
+
+{\ttfamily \#include $<$realvertexedge.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_real_vertex_aa522c094e3e4ee7b342e957263c42394}\label{class_real_vertex_aa522c094e3e4ee7b342e957263c42394} 
+{\bfseries Real\+Vertex} (int id, double longitude, double latitude)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_real_vertex_aeb4e9842fb6173021525b879293e426c}{get\+Adj}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vertex\textquotesingle{}s adjacency list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_real_vertex_a44b419b1b2ce90cdd678658ea14fa179}{get\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Gets the train station associated to the vertex. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_real_vertex_a8bc7585dfa9cd3d43e969827b6b3eee8}{get\+Longitude}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vertex\textquotesingle{}s longitude value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_real_vertex_aafc135b7f4bb84be825aa9a23eb50771}{get\+Latitude}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vertex\textquotesingle{}s latitude value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_real_vertex_a520284ed7599986002597a061b6287bd}{is\+Visited}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the vertex has been visited. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_real_vertex_a9f801b6e486ab00114c128a52b6cf891}{is\+Processing}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the vertex is being processed. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_real_vertex_a7c82c822e8a398667a25e83588421335}{get\+Indegree}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vertex\textquotesingle{}s indegree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_real_vertex_a3a8a180d4ac3a4769f6ba397186cd90e}{get\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Gets the path that travels to the vertex. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_real_vertex_a7880ecdb02245b91fcfc5021bd4e0786}{get\+Incoming}} () const
+\begin{DoxyCompactList}\small\item\em Gets all of the vertex\textquotesingle{}s incoming edges. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_real_vertex_a57566a1fb39020c407c409335326369a}{get\+Distance}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vertex\textquotesingle{}s distance (cost) to a source vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_vertex_a8f8072a3a51d0cfdee278cd124195709}{set\+Visited}} (bool visited)
+\begin{DoxyCompactList}\small\item\em Sets the vertex to either visited or unvisited. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_vertex_a7b86f7b5b4c95abb0dfd14e7d72ba615}{set\+Processsing}} (bool processing)
+\begin{DoxyCompactList}\small\item\em Sets the vertex to either being processed or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_vertex_a8b6719e33b62a8a1511419ea2c464b59}{set\+Indegree}} (unsigned int indegree)
+\begin{DoxyCompactList}\small\item\em Sets the vertex\textquotesingle{}s indegree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_vertex_ad6b6f81214375eb6b8190f7030c29505}{set\+Path}} (\mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Sets the path to the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_real_vertex_a3ec140a29830501463c2adbce4d11f55}{set\+Distance}} (double num)
+\begin{DoxyCompactList}\small\item\em Sets the vertex\textquotesingle{}s distance (cost) to a source vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_real_vertex_afc718c3a89b4c724b3328c0e86011616}{add\+Edge}} (\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}dest, double w)
+\begin{DoxyCompactList}\small\item\em Adds an edge that originates from the vertex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_real_vertex_aa0d7473956b12660e8f7349f4e200353}{remove\+Edge}} (int dest\+ID)
+\begin{DoxyCompactList}\small\item\em Removes an edge that originates from the vertex. \end{DoxyCompactList}\item 
+\Hypertarget{class_real_vertex_ab874cf9db4f6b9bfa0086d70f797b6a4}\label{class_real_vertex_ab874cf9db4f6b9bfa0086d70f797b6a4} 
+bool {\bfseries operator$<$} (\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \&v2) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_real_vertex_a4a99e22f06cc07619bde66bd6d7d29f1}\label{class_real_vertex_a4a99e22f06cc07619bde66bd6d7d29f1} 
+int {\bfseries queue\+Index} = 0
+\begin{DoxyCompactList}\small\item\em Value used for the Mutable Priority Queue class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a place in a real shipping/delivery network. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_real_vertex_afc718c3a89b4c724b3328c0e86011616}\label{class_real_vertex_afc718c3a89b4c724b3328c0e86011616} 
+\index{RealVertex@{RealVertex}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} Real\+Vertex\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{double}]{w }\end{DoxyParamCaption})}
+
+
+
+Adds an edge that originates from the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & The destination vertex \\
+\hline
+{\em w} & The edge\textquotesingle{}s capacity/weight \\
+\hline
+{\em service} & The edge\textquotesingle{}s type of service \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new edge that has been added 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_aeb4e9842fb6173021525b879293e426c}\label{class_real_vertex_aeb4e9842fb6173021525b879293e426c} 
+\index{RealVertex@{RealVertex}!getAdj@{getAdj}}
+\index{getAdj@{getAdj}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} $>$ Real\+Vertex\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the vertex\textquotesingle{}s adjacency list. 
+
+\begin{DoxyReturn}{Returns}
+A vector with all of the vertex\textquotesingle{}s outgoing edges 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a57566a1fb39020c407c409335326369a}\label{class_real_vertex_a57566a1fb39020c407c409335326369a} 
+\index{RealVertex@{RealVertex}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Real\+Vertex\+::get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the vertex\textquotesingle{}s distance (cost) to a source vertex. 
+
+\begin{DoxyReturn}{Returns}
+The vertex\textquotesingle{}s distance to the source 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a44b419b1b2ce90cdd678658ea14fa179}\label{class_real_vertex_a44b419b1b2ce90cdd678658ea14fa179} 
+\index{RealVertex@{RealVertex}!getID@{getID}}
+\index{getID@{getID}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getID()}{getID()}}
+{\footnotesize\ttfamily int Real\+Vertex\+::get\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the train station associated to the vertex. 
+
+\begin{DoxyReturn}{Returns}
+The vertex\textquotesingle{}s station 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a7880ecdb02245b91fcfc5021bd4e0786}\label{class_real_vertex_a7880ecdb02245b91fcfc5021bd4e0786} 
+\index{RealVertex@{RealVertex}!getIncoming@{getIncoming}}
+\index{getIncoming@{getIncoming}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getIncoming()}{getIncoming()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} $>$ Real\+Vertex\+::get\+Incoming (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets all of the vertex\textquotesingle{}s incoming edges. 
+
+\begin{DoxyReturn}{Returns}
+A vector with all of the vertex\textquotesingle{}s incoming edges 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a7c82c822e8a398667a25e83588421335}\label{class_real_vertex_a7c82c822e8a398667a25e83588421335} 
+\index{RealVertex@{RealVertex}!getIndegree@{getIndegree}}
+\index{getIndegree@{getIndegree}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getIndegree()}{getIndegree()}}
+{\footnotesize\ttfamily unsigned int Real\+Vertex\+::get\+Indegree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the vertex\textquotesingle{}s indegree. 
+
+\begin{DoxyReturn}{Returns}
+The indegree of the vertex 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_aafc135b7f4bb84be825aa9a23eb50771}\label{class_real_vertex_aafc135b7f4bb84be825aa9a23eb50771} 
+\index{RealVertex@{RealVertex}!getLatitude@{getLatitude}}
+\index{getLatitude@{getLatitude}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getLatitude()}{getLatitude()}}
+{\footnotesize\ttfamily double Real\+Vertex\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the vertex\textquotesingle{}s latitude value. 
+
+\begin{DoxyReturn}{Returns}
+The vertex\textquotesingle{}s latitude 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a8bc7585dfa9cd3d43e969827b6b3eee8}\label{class_real_vertex_a8bc7585dfa9cd3d43e969827b6b3eee8} 
+\index{RealVertex@{RealVertex}!getLongitude@{getLongitude}}
+\index{getLongitude@{getLongitude}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getLongitude()}{getLongitude()}}
+{\footnotesize\ttfamily double Real\+Vertex\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the vertex\textquotesingle{}s longitude value. 
+
+\begin{DoxyReturn}{Returns}
+The vertex\textquotesingle{}s longitude 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a3a8a180d4ac3a4769f6ba397186cd90e}\label{class_real_vertex_a3a8a180d4ac3a4769f6ba397186cd90e} 
+\index{RealVertex@{RealVertex}!getPath@{getPath}}
+\index{getPath@{getPath}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*} Real\+Vertex\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the path that travels to the vertex. 
+
+\begin{DoxyReturn}{Returns}
+The edge that travels to the vertex 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a9f801b6e486ab00114c128a52b6cf891}\label{class_real_vertex_a9f801b6e486ab00114c128a52b6cf891} 
+\index{RealVertex@{RealVertex}!isProcessing@{isProcessing}}
+\index{isProcessing@{isProcessing}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{isProcessing()}{isProcessing()}}
+{\footnotesize\ttfamily bool Real\+Vertex\+::is\+Processing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the vertex is being processed. 
+
+\begin{DoxyReturn}{Returns}
+True if the vertex is being processed; if it isn\textquotesingle{}t, it returns false 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a520284ed7599986002597a061b6287bd}\label{class_real_vertex_a520284ed7599986002597a061b6287bd} 
+\index{RealVertex@{RealVertex}!isVisited@{isVisited}}
+\index{isVisited@{isVisited}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{isVisited()}{isVisited()}}
+{\footnotesize\ttfamily bool Real\+Vertex\+::is\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the vertex has been visited. 
+
+\begin{DoxyReturn}{Returns}
+True if the vertex has been visited; if it hasn\textquotesingle{}t, it returns false 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_aa0d7473956b12660e8f7349f4e200353}\label{class_real_vertex_aa0d7473956b12660e8f7349f4e200353} 
+\index{RealVertex@{RealVertex}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily bool Real\+Vertex\+::remove\+Edge (\begin{DoxyParamCaption}\item[{int}]{dest\+ID }\end{DoxyParamCaption})}
+
+
+
+Removes an edge that originates from the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+ID} & The destination vertex\textquotesingle{}s station name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge was successfully removed; if it doesn\textquotesingle{}t exist, it returns false 
+\end{DoxyReturn}
+\Hypertarget{class_real_vertex_a3ec140a29830501463c2adbce4d11f55}\label{class_real_vertex_a3ec140a29830501463c2adbce4d11f55} 
+\index{RealVertex@{RealVertex}!setDistance@{setDistance}}
+\index{setDistance@{setDistance}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{setDistance()}{setDistance()}}
+{\footnotesize\ttfamily void Real\+Vertex\+::set\+Distance (\begin{DoxyParamCaption}\item[{double}]{num }\end{DoxyParamCaption})}
+
+
+
+Sets the vertex\textquotesingle{}s distance (cost) to a source vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The vertex\textquotesingle{}s distance to the source \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_real_vertex_a8b6719e33b62a8a1511419ea2c464b59}\label{class_real_vertex_a8b6719e33b62a8a1511419ea2c464b59} 
+\index{RealVertex@{RealVertex}!setIndegree@{setIndegree}}
+\index{setIndegree@{setIndegree}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{setIndegree()}{setIndegree()}}
+{\footnotesize\ttfamily void Real\+Vertex\+::set\+Indegree (\begin{DoxyParamCaption}\item[{unsigned int}]{indegree }\end{DoxyParamCaption})}
+
+
+
+Sets the vertex\textquotesingle{}s indegree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em indegree} & The vertex\textquotesingle{}s new indegree \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_real_vertex_ad6b6f81214375eb6b8190f7030c29505}\label{class_real_vertex_ad6b6f81214375eb6b8190f7030c29505} 
+\index{RealVertex@{RealVertex}!setPath@{setPath}}
+\index{setPath@{setPath}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{setPath()}{setPath()}}
+{\footnotesize\ttfamily void Real\+Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_real_edge}{Real\+Edge}} \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+
+
+Sets the path to the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The edge that leads to the vertex \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_real_vertex_a7b86f7b5b4c95abb0dfd14e7d72ba615}\label{class_real_vertex_a7b86f7b5b4c95abb0dfd14e7d72ba615} 
+\index{RealVertex@{RealVertex}!setProcesssing@{setProcesssing}}
+\index{setProcesssing@{setProcesssing}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{setProcesssing()}{setProcesssing()}}
+{\footnotesize\ttfamily void Real\+Vertex\+::set\+Processsing (\begin{DoxyParamCaption}\item[{bool}]{processing }\end{DoxyParamCaption})}
+
+
+
+Sets the vertex to either being processed or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em processing} & True if setting the vertex to being processed; otherwise, it is false \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_real_vertex_a8f8072a3a51d0cfdee278cd124195709}\label{class_real_vertex_a8f8072a3a51d0cfdee278cd124195709} 
+\index{RealVertex@{RealVertex}!setVisited@{setVisited}}
+\index{setVisited@{setVisited}!RealVertex@{RealVertex}}
+\doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
+{\footnotesize\ttfamily void Real\+Vertex\+::set\+Visited (\begin{DoxyParamCaption}\item[{bool}]{visited }\end{DoxyParamCaption})}
+
+
+
+Sets the vertex to either visited or unvisited. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visited} & True if setting the vertex to visited; otherwise, it is false \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/realvertexedge.\+h\item 
+src/realvertexedge.\+cpp\end{DoxyCompactItemize}

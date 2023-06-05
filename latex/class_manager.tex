@@ -1,0 +1,160 @@
+\doxysection{Manager Class Reference}
+\hypertarget{class_manager}{}\label{class_manager}\index{Manager@{Manager}}
+
+
+Represents the interface between the menu and the graph.  
+
+
+
+
+{\ttfamily \#include $<$manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_manager_a5171cf141e48684db0a0ee9e6b05f37a}{build\+Graph}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Builds a graph containing the shipping/delivery network\textquotesingle{}s places and its connections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a9d356f6d5bffca1c5a2a388c42048100}{build\+Real\+Graph}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Builds a graph containing the real shipping/delivery network\textquotesingle{}s places. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a6454cd59bf3afdfab092383faaf961db}{build\+Real\+Network}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Adds the real shipping/delivery network\textquotesingle{}s connections to the graph. \end{DoxyCompactList}\item 
+\Hypertarget{class_manager_a3ce44a229c819433a1b88323f4654730}\label{class_manager_a3ce44a229c819433a1b88323f4654730} 
+void {\bfseries testing} ()
+\begin{DoxyCompactList}\small\item\em Tests if the graph was successfully created (not meant for the end user) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_manager_a02f43918f3ab4f82ffa248a5e4b075c4}{backtrack}} (vector$<$ int $>$ \&min\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Calculates the shortest path starting at one point and ending in another while going through every node of the graph using a brute force approach. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_manager_a8069886b664057cfd882a7317caadb64}{triangular\+Approximation}} (double \&cost)
+\begin{DoxyCompactList}\small\item\em Calculates the shortest path starting at one point and ending in another while going through every node of the graph using a triangular approximation heuristic. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_manager_a69ca80ebabbd1514380c7bbccfecb8f1}{real\+Triangular\+Approx}} (double \&cost)
+\begin{DoxyCompactList}\small\item\em Calculates the shortest path starting at one point and ending in another, in a real graph, while going through every node of the graph using a triangular approximation heuristic. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_manager_a2c163573bc1dd94a3d17c765b9a48073}{my\+Heuristic}} (vector$<$ int $>$ \&min\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Calculates the shortest path starting at one point and ending in another using an heuristic based on a greedy approach and on 2-\/opt optimization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the interface between the menu and the graph. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_manager_a02f43918f3ab4f82ffa248a5e4b075c4}\label{class_manager_a02f43918f3ab4f82ffa248a5e4b075c4} 
+\index{Manager@{Manager}!backtrack@{backtrack}}
+\index{backtrack@{backtrack}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{backtrack()}{backtrack()}}
+{\footnotesize\ttfamily double Manager\+::backtrack (\begin{DoxyParamCaption}\item[{vector$<$ int $>$ \&}]{min\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Calculates the shortest path starting at one point and ending in another while going through every node of the graph using a brute force approach. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+\_\+path} & The vector to store the shortest path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cost of going through the shortest path between the two points 
+\end{DoxyReturn}
+\Hypertarget{class_manager_a5171cf141e48684db0a0ee9e6b05f37a}\label{class_manager_a5171cf141e48684db0a0ee9e6b05f37a} 
+\index{Manager@{Manager}!buildGraph@{buildGraph}}
+\index{buildGraph@{buildGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{buildGraph()}{buildGraph()}}
+{\footnotesize\ttfamily void Manager\+::build\+Graph (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Builds a graph containing the shipping/delivery network\textquotesingle{}s places and its connections. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file containing the places\textquotesingle{} data \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_manager_a9d356f6d5bffca1c5a2a388c42048100}\label{class_manager_a9d356f6d5bffca1c5a2a388c42048100} 
+\index{Manager@{Manager}!buildRealGraph@{buildRealGraph}}
+\index{buildRealGraph@{buildRealGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{buildRealGraph()}{buildRealGraph()}}
+{\footnotesize\ttfamily void Manager\+::build\+Real\+Graph (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Builds a graph containing the real shipping/delivery network\textquotesingle{}s places. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file containing the real places\textquotesingle{} data \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_manager_a6454cd59bf3afdfab092383faaf961db}\label{class_manager_a6454cd59bf3afdfab092383faaf961db} 
+\index{Manager@{Manager}!buildRealNetwork@{buildRealNetwork}}
+\index{buildRealNetwork@{buildRealNetwork}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{buildRealNetwork()}{buildRealNetwork()}}
+{\footnotesize\ttfamily void Manager\+::build\+Real\+Network (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Adds the real shipping/delivery network\textquotesingle{}s connections to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file containing the real connections\textquotesingle{} data \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_manager_a2c163573bc1dd94a3d17c765b9a48073}\label{class_manager_a2c163573bc1dd94a3d17c765b9a48073} 
+\index{Manager@{Manager}!myHeuristic@{myHeuristic}}
+\index{myHeuristic@{myHeuristic}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{myHeuristic()}{myHeuristic()}}
+{\footnotesize\ttfamily double Manager\+::my\+Heuristic (\begin{DoxyParamCaption}\item[{vector$<$ int $>$ \&}]{min\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Calculates the shortest path starting at one point and ending in another using an heuristic based on a greedy approach and on 2-\/opt optimization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+\_\+path} & The minimum path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cost of going through the shortest path between the two points 
+\end{DoxyReturn}
+\Hypertarget{class_manager_a69ca80ebabbd1514380c7bbccfecb8f1}\label{class_manager_a69ca80ebabbd1514380c7bbccfecb8f1} 
+\index{Manager@{Manager}!realTriangularApprox@{realTriangularApprox}}
+\index{realTriangularApprox@{realTriangularApprox}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{realTriangularApprox()}{realTriangularApprox()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_real_vertex}{Real\+Vertex}} \texorpdfstring{$\ast$}{*} $>$ Manager\+::real\+Triangular\+Approx (\begin{DoxyParamCaption}\item[{double \&}]{cost }\end{DoxyParamCaption})}
+
+
+
+Calculates the shortest path starting at one point and ending in another, in a real graph, while going through every node of the graph using a triangular approximation heuristic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cost} & The cost of going through the shortest path between the two points \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the shortest path 
+\end{DoxyReturn}
+\Hypertarget{class_manager_a8069886b664057cfd882a7317caadb64}\label{class_manager_a8069886b664057cfd882a7317caadb64} 
+\index{Manager@{Manager}!triangularApproximation@{triangularApproximation}}
+\index{triangularApproximation@{triangularApproximation}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{triangularApproximation()}{triangularApproximation()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ Manager\+::triangular\+Approximation (\begin{DoxyParamCaption}\item[{double \&}]{cost }\end{DoxyParamCaption})}
+
+
+
+Calculates the shortest path starting at one point and ending in another while going through every node of the graph using a triangular approximation heuristic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cost} & The cost of going through the shortest path between the two points \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the shortest path 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/manager.\+h\item 
+src/manager.\+cpp\end{DoxyCompactItemize}

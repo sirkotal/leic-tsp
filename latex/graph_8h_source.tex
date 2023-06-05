@@ -1,0 +1,58 @@
+\doxysection{graph.\+h}
+\hypertarget{graph_8h_source}{}\label{graph_8h_source}\index{headers/graph.h@{headers/graph.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LEIC\_TSP\_GRAPH\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LEIC\_TSP\_GRAPH\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_vertex}{Vertex}};}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}vertexedge.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}mpq.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graph}{Graph}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_graph}{Graph}}()\ \{\};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_vertex}{Vertex}}\ *\mbox{\hyperlink{class_graph_a05c45e4efdf867792139ddf3628c0b60}{findVertex}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph_a2d2f69946b29fee07c53cb6552c7690e}{addVertex}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph_a38c809fafdc066f38459697436b86507}{addEdge}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{int}\ dest,\ \textcolor{keywordtype}{double}\ w);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph_a7f3ea744ee18566617629cbafb9b5e48}{addBidirectionalEdge}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{int}\ dest,\ \textcolor{keywordtype}{double}\ w);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_graph_abb5e0517e2979c54eebdafc2a9875e8f}{getNumVertex}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_graph_a36f46cf7e705174d9596e2e3030695b5}{getNumEdges}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ unordered\_map<int,\ Vertex*>\ \mbox{\hyperlink{class_graph_a1e805d1e47b847b9665cf978aa31ab4a}{getVertexSet}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_graph_ad01f14df75728998b5bd3cc29f6b2630}{bruteforceBacktrack}}(\mbox{\hyperlink{class_vertex}{Vertex}}*\ current,\ \mbox{\hyperlink{class_vertex}{Vertex}}*\ start,\ \textcolor{keywordtype}{int}\ counter,\ \textcolor{keywordtype}{double}\ distance,\ \textcolor{keywordtype}{double}\ min\_distance,\ vector<int>\ \&min\_path,\ vector<int>\ \&pathTSP);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00097\ \ \ \ \ vector<Vertex*>\ \mbox{\hyperlink{class_graph_a9255bd55456f01eb2493035a0774efee}{prim}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{double}\ \&tspCost,\ \mbox{\hyperlink{class_graph}{Graph}}\ \&mst\_graph);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_ae8645966bd39c1ddc9f9196ef691ecc3}{preorderTraversal}}(\mbox{\hyperlink{class_vertex}{Vertex}}*\ v,\ vector<Vertex*>\ \&path,\ \textcolor{keywordtype}{double}\ \&cost,\ \textcolor{keywordtype}{int}\ \&prev\_id);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_graph_ac7bae85698a017bd413c4825046138b3}{costCalculation}}(\mbox{\hyperlink{class_vertex}{Vertex}}*\ s,\ \mbox{\hyperlink{class_vertex}{Vertex}}*\ t);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_graph_aa36a877d5df22989f196b9e30230afc1}{myHeuristic}}(\mbox{\hyperlink{class_vertex}{Vertex}}*\ current,\ \mbox{\hyperlink{class_vertex}{Vertex}}*\ start,\ \textcolor{keywordtype}{double}\ dist,\ vector<int>\ \&pathTSP,\ \textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00132\ \ \ \ \ unordered\_map<int,\ Vertex*>\ vertexSet;\ \ \ \ \textcolor{comment}{//\ vertex\ set}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{bool}\ removeVertex(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LEIC\_TSP\_GRAPH\_H}}
+
+\end{DoxyCode}
