@@ -52,6 +52,7 @@ public:
      */
     vector<Vertex*> triangularApproximation(double &cost);
 
+
     /**
      * @brief Calculates the shortest path starting at one point and ending in another, in a real graph, while going through every node of the graph using a triangular approximation heuristic
      * @param cost The cost of going through the shortest path between the two points
@@ -59,16 +60,22 @@ public:
      */
     vector<RealVertex*> realTriangularApprox(double &cost);
 
+    double myHeuristic(vector<int> &min_path);
+    // int numTest();
+
+
 private:
     /**
      * @brief The network's graph
      */
     Graph *network;
 
+
     /**
      * @brief The real network's graph
      */
     RealGraph real_network;
+
 };
 
 #endif //LEIC_TSP_MANAGER_H

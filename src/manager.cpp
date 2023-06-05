@@ -163,3 +163,15 @@ vector<RealVertex*> Manager::realTriangularApprox(double &cost) {
     cost += real_network.costCalculation((*(path.rbegin())), real_network.findVertex(src));
     return path;
 }
+
+
+double Manager::myHeuristic(vector<int> &min_path) {
+    Vertex *v = network->findVertex(0);
+    int n = network->getNumVertex();
+    vector<bool> visit(n, false);
+    double distance = 0;
+    vector<int> test;
+    return network->myHeuristic(v, v, distance, min_path, n);
+}
+
+

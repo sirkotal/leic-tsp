@@ -113,6 +113,9 @@ public:
      * @return The cost of traveling between the two vertices
      */
     double costCalculation(Vertex* s, Vertex* t);
+
+    double myHeuristic(Vertex* current, Vertex* start, double dist, vector<int> &pathTSP, int size);
+
 private:
     /**
      * @brief An unordered map containing every pair of the graph's vertices and their respective IDs
@@ -125,6 +128,7 @@ private:
      * @return True if the vertex was successfully removed; if the vertex does not exist, it returns false
      */
     bool removeVertex(int id);
+
 };
 
 #endif //LEIC_TSP_GRAPH_H
