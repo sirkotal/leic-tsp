@@ -107,8 +107,11 @@ void Menu::mainMenu(){
                 }
                 case '3':
                 {
-                    string filename = "../data/Toy-Graphs/stadiums.csv";
-                    manager.buildGraph(filename);
+                    if (is_real) {
+                        cout << "I'm sorry, but this service isn't available right now." << endl;
+                        cout << endl;
+                        break;
+                    }
                     int origin = 0;
                     vector<int> min_path;
                     auto start = chrono::high_resolution_clock::now();
