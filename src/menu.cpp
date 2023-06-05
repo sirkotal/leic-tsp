@@ -116,8 +116,8 @@ void Menu::mainMenu(){
                     auto end = chrono::high_resolution_clock::now();
                     auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
                     cout << "Path: ";
-                    for (auto element: min_path) {
-                        cout << element << "->";
+                    for (int i = 0; i < min_path.size() - 1; i++) {
+                        cout << min_path[i] << "->";
                     }
                     cout << origin << endl;
 
