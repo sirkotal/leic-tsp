@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <algorithm>
 
 #define MAX std::numeric_limits<double>::max()
 #define HIGH INT32_MAX
@@ -222,22 +223,21 @@ double Graph::myHeuristic(Vertex* current, Vertex* start, double dist, vector<in
     current->setVisited(true);
     pathTSP.push_back(current->getID());
 
-    if(size  == pathTSP.size()){
+    if(size == pathTSP.size()){
     //ended, put 0 and add the final distance
-        pathTSP.push_back(start->getID());
         for(auto i : current->getAdj())
         {
-            if(i->getDest() == start)
+            if(i->getDest()->getID() == pathTSP.front())
             {
+                pathTSP.push_back(start->getID());
                 dist += i->getWeight();
-                current = start;
                 return dist;
             }
         }
     }
     else {
         double minCurrentDist = MAX;
-        Vertex *minVertex;
+        Vertex *minVertex = start;
         for (auto a: current->getAdj()) {
             if (!a->getDest()->isVisited()) {
                 double newDist = a->getWeight();
@@ -249,62 +249,62 @@ double Graph::myHeuristic(Vertex* current, Vertex* start, double dist, vector<in
         }
         dist = myHeuristic(minVertex, start, (dist + minCurrentDist), pathTSP, size);
     }
-    // 2-opt
-    if (pathTSP.size() == size + 1){
+
+
+   // 2-opt
         int numNodes = pathTSP.size();
         bool improve = true;
 
-        while (improve){
+        while(improve){
             improve = false;
-            for (int i = 0; i < numNodes - 2; ++i) {
-                for (int j = i + 2; j < numNodes; ++j) {
-                    Vertex* v1 =  findVertex(i);
-                    Vertex* v2 =  findVertex(i + 1);
-                    Vertex* v3 =  findVertex(j);
-                    Vertex* v4 =  findVertex(j + 1);
+            for (int i = 0; i < numNodes - 3; i++) {
+                    Vertex* v1 =  findVertex(pathTSP[i]);
+                    Vertex* v2 =  findVertex(pathTSP[i+1]);
+                    Vertex* v3 =  findVertex(pathTSP[i+2]);
+                    Vertex* v4 =  findVertex(pathTSP[i+3]);
 
-                    double dist1, dist2, dist3, dist4;
-                    for (const auto& edge : v1->getAdj()) {
+                    double dist1_2, dist3_4, dist1_3, dist2_4;
+                    for (auto edge : v1->getAdj()) {
                         if (edge->getDest() == v2) {
-                            dist1 = edge->getWeight();
+                            dist1_2 = edge->getWeight();
                             break;
                         }
                     }
-                    for (const auto& edge : v3->getAdj()) {
+                    for (auto edge : v3->getAdj()) {
                         if (edge->getDest() == v4) {
-                            dist2 = edge->getWeight();
+                            dist3_4 = edge->getWeight();
                             break;
                         }
                     }
-                    for (const auto& edge : v1->getAdj()) {
+                    for (auto edge : v1->getAdj()) {
                         if (edge->getDest() == v3) {
-                            dist3 = edge->getWeight();
+                            dist1_3 = edge->getWeight();
                             break;
                         }
                     }
-                    for (const auto& edge : v2->getAdj()) {
+
+
+                    for (auto edge : v2->getAdj()) {
                         if (edge->getDest() == v4) {
-                            dist4 =  edge->getWeight();
+                            dist2_4 =  edge->getWeight();
                             break;
                         }
                     }
+
 
                     // Fazer a troca
-                    double newDist = dist - dist1 - dist2;
-                    newDist += dist3 + dist4;
+                    double newDist;
+                    double a = dist1_2 + dist3_4;
+                    double b = dist2_4 + dist1_3;
 
                     // Se o novo caminho for mais curto, aceitar a troca
-                    if (newDist < dist) {
+                    if (b < a) {
                         improve = true;
-                        dist = newDist;
-                        std::reverse(pathTSP.begin() + i + 1, pathTSP.begin() + j + 1);
+                        dist = dist + b - a;
+                        swap(pathTSP[i+1],pathTSP[i+2]);
                     }
                 }
             }
-
-            }
-
-    }
 
     return dist;
 }

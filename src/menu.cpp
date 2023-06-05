@@ -97,13 +97,27 @@ void Menu::mainMenu(){
                     }
                     break;
                 }
-                /*case '3':
-                    menu.printSubMenu3();
-                    cin >> choice_submenu;
-                    if (!std::cin.fail()){
-                        menu.switchSubMenu3(choice_submenu);
+                case '3':
+                {
+                    string filename = "../data/Toy-Graphs/stadiums.csv";
+                    manager.buildGraph(filename);
+                    int origin = 0;
+                    vector<int> min_path;
+                    auto start = chrono::high_resolution_clock::now();
+                    cout << "Cost: " << manager.myHeuristic(min_path) << endl;
+                    auto end = chrono::high_resolution_clock::now();
+                    auto duration = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+                    cout << "Path: ";
+                    for (auto element: min_path) {
+                        cout << element << "->";
                     }
-                    break;*/
+                    cout << origin << endl;
+
+                    if (toggle_exec_time) {
+                        cout << "Elapsed Time: " << duration << " s" << endl;
+                    }
+                    break;
+                }
                 case 'r':
                 case 'R':
                     printBuildSubMenu();

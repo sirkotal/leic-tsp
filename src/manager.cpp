@@ -164,3 +164,15 @@ vector<Vertex*> Manager::triangularApproximation(double &cost) {
     vector<Vertex*> mst = network->prim(0, cost);
     return mst;
 }
+
+
+double Manager::myHeuristic(vector<int> &min_path) {
+    Vertex *v = network->findVertex(0);
+    int n = network->getNumVertex();
+    vector<bool> visit(n, false);
+    double distance = 0;
+    vector<int> test;
+    return network->myHeuristic(v, v, distance, min_path, n);
+}
+
+

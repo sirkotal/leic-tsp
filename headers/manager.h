@@ -42,6 +42,7 @@ public:
 
     vector<Vertex*> triangularApproximation(double &cost);
 
+    double myHeuristic(vector<int> &min_path);
     // int numTest();
 
 private:
@@ -51,6 +52,7 @@ private:
     Graph *network;
 
     RealGraph *real_network;
+
 };
 
 #endif //LEIC_TSP_MANAGER_H
