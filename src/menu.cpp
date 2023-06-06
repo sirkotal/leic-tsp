@@ -5,6 +5,7 @@
 bool toggle_exec_time = false;
 bool is_real = false;
 bool real_chosen = false;
+bool is_fully_connected = false;
 
 Menu::Menu(): manager(Manager()) {}
 
@@ -107,7 +108,7 @@ void Menu::mainMenu(){
                 }
                 case '3':
                 {
-                    if (is_real) {
+                    if (!is_fully_connected) {
                         cout << "I'm sorry, but this service isn't available right now." << endl;
                         cout << endl;
                         break;
@@ -177,6 +178,9 @@ void Menu::switchBuildSubMenu(char option) {
             path = path + "Toy-Graphs/";
             cout << "Insert your routing file: ";
             cin >> edges;
+            if(edges != "shipping.csv"){
+                is_fully_connected = true;
+            }
             edges = path + edges;
             std::cin.ignore(); //clear the buffer
             cout << endl;
@@ -184,6 +188,7 @@ void Menu::switchBuildSubMenu(char option) {
             break;
         case '2':
             is_real = true;
+            is_fully_connected = true;
             path = path + "Extra_Fully_Connected_Graphs/";
             cout << "Insert your routing file: ";
             cin >> edges;
@@ -195,6 +200,7 @@ void Menu::switchBuildSubMenu(char option) {
         case '3':
             is_real = true;
             real_chosen = true;
+            is_fully_connected = false;
             cout << "Insert the number of the graph you wish to build: ";
             cin >> graph_num;
             if (graph_num == "1") {
